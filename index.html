@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agencia CriativaWeb</title>
+    <link rel="stylesheet" href="CSS/reset.css" />
+    <link rel="stylesheet" href="CSS/styles.css" />
+  </head>
+  <body>
+    <header>
+      <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false">MENU</button>
+
+      <img
+        class="logo"
+        src="Assets/@LogoBW - Agencia CriativaWeb.svg"
+        srcset="Assets/@LogoBW - Agencia CriativaWeb.svg 1x"
+        sizes="(max-width: 900px) 60vw, 20vw"
+        alt="Agencia CriativaWeb Logo"
+      />
+
+      <nav class="navMenu" id="site-nav">
+        <a href="#inicio">Início</a>
+        <a href="#porTrasDaMarca">Por Trás da Marca</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#contato" class="btn-contato-mobile">Contato</a>
+      </nav>
+      <a class="btn-contato" href="#contato">Contato</a>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero-banner">
+        <img
+          class="logo-mobile"
+          src="Assets/@LogoBW - Agencia CriativaWeb.svg"
+          srcset="Assets/@LogoBW - Agencia CriativaWeb.svg 1x"
+          sizes="(max-width: 900px) 60vw, 20vw"
+          alt="Agencia CriativaWeb Logo"
+        />
+        <h1>Design que posiciona<br />Estratégia que diferencia.</h1>
+        <p class="hero-text">
+          Impulsionamos negócios com clareza visual, posicionamento inteligente e soluções digitais que realmente
+          funcionam.
+        </p>
+        <a href="#solucoes" class="bt-large bt-hero-banner">Explorar nossas soluções</a>
+      </section>
+
+      <section id="porTrasDaMarca" class="portras">
+        <h2>Construindo marcas que lideram.</h2>
+        <p class="portras-text">
+          Planejamos, criamos e entregamos experiências digitais que resolvem problemas reais e impulsionam resultados.
+        </p>
+        <div class="about-images">
+          <div class="card card-small">
+            <img
+              src="Assets/Matheus.jpg"
+              srcset="Assets/Matheus.jpg 1x"
+              sizes="(max-width: 900px) 60vw, 20vw"
+              alt="Retrato de Matheus M., Diretor Criativo"
+            />
+            <p class="about-name">Matheus M.</p>
+            <p class="about-role">Diretor Criativo</p>
+            <button class="about-bt" data-member="matheus" aria-label="Mais informações sobre Matheus M.">+</button>
+          </div>
+          <div class="card card-small">
+            <img
+              src="Assets/Gleyce.jpg"
+              srcset="Assets/Gleyce.jpg 1x"
+              sizes="(max-width: 900px) 60vw, 20vw"
+              alt="Retrato de Gleyce M., Diretora Executiva"
+            />
+            <p class="about-name">Gleyce M.</p>
+            <p class="about-role">Diretora Executiva</p>
+            <button class="about-bt" data-member="gleyce" aria-label="Mais informações sobre Gleyce M.">+</button>
+          </div>
+          <div class="card card-small">
+            <img
+              src="Assets/Henrique.jpg"
+              srcset="Assets/Henrique.jpg 1x"
+              sizes="(max-width: 900px) 60vw, 20vw"
+              alt="Retrato de Henrique M., Diretor Estratégico"
+            />
+            <p class="about-name">Henrique M.</p>
+            <p class="about-role">Diretor Estratégico</p>
+            <button class="about-bt" data-member="henrique" aria-label="Mais informações sobre Henrique M.">+</button>
+          </div>
+          <div class="card card-large">
+            <img
+              src="Assets/Solitude.jpg"
+              srcset="Assets/Solitude.jpg 1x"
+              sizes="(max-width: 900px) 60vw, 20vw"
+              alt="Logo do cliente Solitude"
+            />
+            <p class="about-name-project">Projetos que impulsionaram marcas</p>
+            <p class="about-brand">
+              “Impacto digital para grandes marcas reposicionamento completo e aumento de performance.”
+            </p>
+          </div>
+          <div class="card card-extralarge">
+            <img
+              src="Assets/Crave.jpg"
+              srcset="Assets/Crave.jpg 1x"
+              sizes="(max-width: 900px) 60vw, 20vw"
+              alt="Embalagem do produto do cliente Crave"
+            />
+            <p class="about-name-project">Projetos que impulsionaram marcas</p>
+            <p class="about-brand">“Experiência visual renovada que elevou a percepção de valor da empresa.”</p>
+          </div>
+          <div class="card card-small card-small-last">
+            <img
+              src="Assets/Paulo.jpg"
+              srcset="Assets/Paulo.jpg 1x"
+              sizes="(max-width: 900px) 60vw, 20vw"
+              alt="Retrato de Paulo S., Relações Públicas"
+            />
+            <p class="about-name">Paulo S.</p>
+            <p class="about-role">Relações Públicas</p>
+            <button class="about-bt" data-member="paulo" aria-label="Mais informações sobre Paulo S.">+</button>
+          </div>
+          <div class="card card-small card-small-last">
+            <img
+              src="Assets/Rodrigo.jpg"
+              srcset="Assets/Rodrigo.jpg 1x"
+              sizes="(max-width: 900px) 60vw, 20vw"
+              alt="Retrato de Rodrigo S., Designer Criativo"
+            />
+            <p class="about-name">Rodrigo S.</p>
+            <p class="about-role">Designer Criativo</p>
+            <button class="about-bt" data-member="rodrigo" aria-label="Mais informações sobre Rodrigo S.">+</button>
+          </div>
+        </div>
+        <button class="bt-large bt-porTrasDaMarca">Explorar portfólio</button>
+      </section>
+
+      <section id="solucoes" class="solucoes">
+        <h2 class="solucoes-titulo">Como podemos te ajudar</h2>
+        <p class="solucoes-text">
+          Soluções completas para fortalecer sua marca, elevar sua presença digital e criar experiências que geram
+          impacto real.
+        </p>
+        <section class="solucoes-cards">
+          <div class="solucoes-carrossel"></div>
+
+          <div class="solucoes-detalhes">
+            <div class="solucoes-detalhes-topo">
+              <img class="solucoes-detalhes-icone" src="" alt="" />
+              <h3 class="solucoes-detalhes-titulo"></h3>
+            </div>
+
+            <p class="solucoes-detalhes-texto"></p>
+
+            <ul class="solucoes-detalhes-lista"></ul>
+
+            <button class="about-bt solucoes-bt">+</button>
+          </div>
+        </section>
+      </section>
+
+      <section class="depoimentos">
+        <button class="depo-prev" aria-label="Depoimento Anterior">‹</button>
+        <div class="depoimentos-track">
+          <div class="depoimentos-div active">
+            <img
+              src="Assets/MariaFernades.jpg"
+              srcset="Assets/MariaFernades.jpg 1x"
+              sizes="(max-width: 900px) 60vw, 20vw"
+              alt="Diretora Maria Fernandes"
+            />
+            <div class="depoimentos-infos">
+              <p class="depoimentos-nome">Maria Fernandes, <strong>Diretora de Marketing</strong></p>
+              <p class="depoimentos-texto">
+                “Profissionais incríveis. Nos ajudaram a reposicionar nossa marca com clareza e um visual impecável.”
+              </p>
+            </div>
+          </div>
+          <div class="depoimentos-div">
+            <img
+              src="Assets/LucasRibeiro.jpg"
+              srcset="Assets/LucasRibeiro.jpg 1x"
+              sizes="(max-width: 900px) 60vw, 20vw"
+              alt="CEO Lucas Ribeiro"
+            />
+            <div class="depoimentos-infos">
+              <p class="depoimentos-nome">Lucas Ribeiro, <strong>CEO</strong></p>
+              <p class="depoimentos-texto">
+                “O site ficou rápido, moderno e muito mais funcional. A experiência final superou nossas expectativas.”
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="depo-next" aria-label="Próximo Depoimento">›</button>
+      </section>
+
+      <section id="contato" class="contato">
+        <h2>Pronto para transformar sua marca?</h2>
+        <p>Estamos aqui para ajudar você a dar o próximo passo com estratégia, clareza e design inteligente.</p>
+
+        <div class="contato-div">
+          <div>
+            <p class="contato-endereco">
+              <strong> Endereço:</strong> <br />Rua das ruas, <br />123 - Cidade dos milagres, <br />Pais dos sonhos
+              <br />
+              12345-666
+            </p>
+            <p class="contato-email">
+              <a href="mailto: contato@agenciacriativaweb.com">
+                <strong> E-mail:</strong><br />
+                contato@agenciacriativaweb.com
+              </a>
+            </p>
+            <p class="contato-telefone">
+              <a href="tel:+551234666">
+                <strong> Telefone: </strong><br />
+                +55 1234 666
+              </a>
+            </p>
+          </div>
+
+          <div class="form-div">
+            <h3>Envie uma mensagem</h3>
+            <p>Nos conte sobre seu projeto. Respondemos o mais rápido possível.</p>
+            <form class="form-contato" action="">
+              <input type="text" placeholder="Nome" required />
+              <input type="email" placeholder="E-mail" required />
+              <textarea placeholder="Escreva sua mensagem aqui..." rows="4" required></textarea>
+              <button type="submit" class="bt-submitForm">Enviar Mensagem</button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <nav class="navMenuFooter">
+        <a href="#inicio">Inicio</a>
+        <a href="#porTrasDaMarca">Por trás da Marca</a>
+        <a href="#solucoes">Soluções</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <p class="footer-text">Agência Criativa Web — Criando experiências digitais que impulsionam marcas</p>
+      <p class="footer-direitos">© 2025 Agência Criativa Web. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- modal de funcionarios -->
+    <dialog class="modal-membro" id="modal-membro" aria-labelledby="modal-membro-title" aria-modal="true">
+      <div class="modal-membro-conteudo">
+        <button class="modal-membro-fechar">×</button>
+
+        <!-- Parte 1 - Foto  -->
+        <img class="modal-membro-foto" src="" alt="" />
+
+        <!-- Parte 2 - Informações -->
+        <div class="modal-membro-info">
+          <h3 id="modal-membro-title" class="modal-membro-nome"></h3>
+          <p class="modal-membro-cargo"></p>
+        </div>
+
+        <!-- Parte 3 - Bio e Lista -->
+        <div class="modal-membro-body">
+          <p class="modal-membro-bio"></p>
+          <ul class="modal-membro-lista"></ul>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- modal de servicos -->
+    <dialog class="modal-servico" id="modal-servico" aria-labelledby="modal-servico-label" aria-modal="true">
+      <div class="modal-servico-conteudo">
+        <button class="modal-servico-fechar">×</button>
+        <h3 class="modal-servico-titulo sr-only"></h3>
+        <p id="modal-servico-label" class="modal-servico-texto"></p>
+      </div>
+    </dialog>
+
+    <!-- Modal portfolio de servicos -->
+    <dialog class="modal-portfolio" id="modal-portfolio" aria-labelledby="modal-portfolio-titulo" aria-modal="true">
+      <div class="modal-portfolio-conteudo">
+        <button class="modal-portfolio-fechar">×</button>
+        <h3 id="modal-portfolio-titulo" class="modal-portfolio-titulo">Portfólio em construção</h3>
+      </div>
+    </dialog>
+
+    <script src="JS/script.js"></script>
+    <script src="JS/solucoes.js"></script>
+  </body>
+</html>
