@@ -1,150 +1,180 @@
-const funcionarios = [
+const teamMembers = [
   {
     id: "matheus",
-    nome: "Matheus M.",
-    cargo: "Diretor Criativo",
-    bio: "Matheus é o cérebro por trás das nossas campanhas inovadoras, combinando criatividade com estratégia para entregar resultados excepcionais aos nossos clientes.",
-    foto: "Assets/Matheus.jpg",
+    name: "Matheus M.",
+    role: "Creative Director",
+    bio: "Matheus is the creative mind behind our most innovative campaigns, combining bold ideas and strategy to deliver meaningful results.",
+    photo: "Assets/Matheus.jpg",
     bullets: [
-      "Liderança criativa em campanhas 360º",
-      "Transforma estratégias em conceitos visuais fortes",
-      "Projetos com foco em aumento de engajamento e conversão",
+      "Creative leadership for 360° campaigns.",
+      "Transforms strategy into strong visual concepts.",
+      "Projects focused on engagement and conversion.",
     ],
   },
   {
     id: "gleyce",
-    nome: "Gleyce M.",
-    cargo: "Diretora Executiva",
-    bio: "Gleyce lidera nossa equipe com paixão e visão, garantindo que cada projeto seja executado com excelência e alinhado aos objetivos de nossos clientes.",
-    foto: "Assets/Gleyce.jpg",
+    name: "Gleyce M.",
+    role: "Executive Director",
+    bio: "Gleyce leads our team with clarity and vision, ensuring every project is executed with excellence and aligned with our clients' goals.",
+    photo: "Assets/Gleyce.jpg",
     bullets: [
-      "Gestão de equipes multidisciplinares com foco em performance",
-      "Condução de projetos complexos com prazos desafiadores",
-      "Relacionamento próximo e estratégico com clientes-chave",
+      "Leads multidisciplinary teams with a performance mindset.",
+      "Drives complex projects with challenging deadlines.",
+      "Builds strategic, long-term relationships with key clients.",
     ],
   },
   {
     id: "henrique",
-    nome: "Henrique M.",
-    cargo: "Diretor Estratégico",
-    bio: "Henrique é o estrategista que impulsiona nossas campanhas, utilizando dados e insights para criar soluções que realmente conectam marcas e públicos.",
-    foto: "Assets/Henrique.jpg",
+    name: "Henrique M.",
+    role: "Strategic Director",
+    bio: "Henrique drives our strategic thinking, using data and insights to create solutions that truly connect brands and audiences.",
+    photo: "Assets/Henrique.jpg",
     bullets: [
-      "Planejamento de campanhas guiado por dados e insights",
-      "Especialista em posicionamento e diferenciação de marca",
-      "Otimização contínua de performance em canais digitais",
+      "Campaign planning driven by data and insights.",
+      "Specialist in brand positioning and differentiation.",
+      "Ongoing optimisation of performance across channels.",
     ],
   },
   {
     id: "paulo",
-    nome: "Paulo S.",
-    cargo: "Relações Públicas",
-    bio: "Paulo é o especialista em comunicação que constrói e mantém a imagem positiva de nossos clientes, cultivando relacionamentos sólidos com a mídia e o público.",
-    foto: "Assets/Paulo.jpg",
+    name: "Paulo S.",
+    role: "Public Relations Lead",
+    bio: "Paulo is our communication specialist, building and protecting our clients’ reputations and managing key relationships.",
+    photo: "Assets/Paulo.jpg",
     bullets: [
-      "Gestão de reputação e comunicação em múltiplos canais",
-      "Relacionamento com imprensa, influenciadores e stakeholders",
-      "Criação de narrativas que fortalecem a imagem da marca",
+      "Reputation and communication management across channels.",
+      "Strong relationships with press, influencers, and stakeholders.",
+      "Creates narratives that strengthen brand perception.",
     ],
   },
   {
     id: "rodrigo",
-    nome: "Rodrigo S.",
-    cargo: "Designer Criativo",
-    bio: "Rodrigo é o talento por trás dos visuais impressionantes que criamos, combinando arte e funcionalidade para dar vida às ideias de nossos clientes.",
-    foto: "Assets/Rodrigo.jpg",
+    name: "Rodrigo S.",
+    role: "Creative Designer",
+    bio: "Rodrigo is the talent behind many of our visual concepts, combining aesthetics and usability to bring ideas to life.",
+    photo: "Assets/Rodrigo.jpg",
     bullets: [
-      "Criação de identidades visuais alinhadas à estratégia da marca",
-      "Layouts para web e social com foco em clareza e impacto visual",
-      "Domínio de ferramentas Adobe e boas práticas de design digital",
+      "Creates visual identities aligned with brand strategy.",
+      "Designs layouts for web and social with clarity and impact.",
+      "Strong command of Adobe tools and digital design best practices.",
     ],
   },
 ];
 
-const aboutBtFuncionarios = document.querySelectorAll(".about-bt");
-const modalMembro = document.getElementById("modal-membro");
-const modalMembroFoto = document.querySelector(".modal-membro-foto");
-const modalMembroNome = document.querySelector(".modal-membro-nome");
-const modalMembroCargo = document.querySelector(".modal-membro-cargo");
-const modalMembroBio = document.querySelector(".modal-membro-bio");
-const modalMembroLista = document.querySelector(".modal-membro-lista");
-const modalMembroFecharBtn = document.querySelector(".modal-membro-fechar");
+// Employee modal
+const teamButtons = document.querySelectorAll(".behind-the-brand-bt");
+const employeeModal = document.getElementById("modal-employee");
+const employeePhoto = document.querySelector(".modal-employee-photo");
+const employeeName = document.querySelector(".modal-employee-name");
+const employeeRole = document.querySelector(".modal-employee-role");
+const employeeBio = document.querySelector(".modal-employee-bio");
+const employeeList = document.querySelector(".modal-employee-list");
+const employeeCloseBtn = document.querySelector(".modal-employee-close");
 
-if (aboutBtFuncionarios.length && modalMembro) {
-  aboutBtFuncionarios.forEach((botao) => {
-    botao.addEventListener("click", () => {
-      const membroId = botao.getAttribute("data-member");
-      const funcionario = funcionarios.find((func) => func.id === membroId);
+if (teamButtons.length && employeeModal) {
+  teamButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const memberId = button.getAttribute("data-member");
+      const member = teamMembers.find((person) => person.id === memberId);
 
-      if (funcionario) {
-        if (modalMembroFoto) {
-          modalMembroFoto.src = funcionario.foto;
-          modalMembroFoto.alt = funcionario.nome;
-        }
-        if (modalMembroNome) {
-          modalMembroNome.textContent = funcionario.nome;
-        }
-        if (modalMembroCargo) {
-          modalMembroCargo.textContent = funcionario.cargo;
-        }
-        if (modalMembroBio) {
-          modalMembroBio.textContent = funcionario.bio;
-        }
+      if (!member) return;
 
-        if (modalMembroLista) {
-          modalMembroLista.innerHTML = "";
-          funcionario.bullets.forEach((texto) => {
-            const li = document.createElement("li");
-            li.textContent = texto;
-            modalMembroLista.appendChild(li);
-          });
-        }
+      if (employeePhoto) {
+        employeePhoto.src = member.photo;
+        employeePhoto.alt = member.name;
+      }
 
-        if (modalMembro.showModal) modalMembro.showModal();
+      if (employeeName) employeeName.textContent = member.name;
+      if (employeeRole) employeeRole.textContent = member.role;
+      if (employeeBio) employeeBio.textContent = member.bio;
+
+      if (employeeList) {
+        employeeList.innerHTML = "";
+        member.bullets.forEach((item) => {
+          const li = document.createElement("li");
+          li.textContent = item;
+          employeeList.appendChild(li);
+        });
+      }
+
+      if (typeof employeeModal.showModal === "function") {
+        employeeModal.showModal();
+      } else {
+        employeeModal.setAttribute("open", "");
       }
     });
   });
 }
 
-function fecharModalMembro() {
-  if (modalMembro && modalMembro.open) modalMembro.close();
+function closeEmployeeModal() {
+  if (!employeeModal) return;
+
+  if (employeeModal.open) {
+    try {
+      employeeModal.close();
+    } catch {
+      employeeModal.removeAttribute("open");
+    }
+  }
 }
 
-modalMembroFecharBtn?.addEventListener("click", fecharModalMembro);
+employeeCloseBtn?.addEventListener("click", closeEmployeeModal);
 
-modalMembro?.addEventListener("cancel", (e) => {
-  fecharModalMembro();
-});
-
-// Portfolio dialog
-const botaoPortfolio = document.querySelector(".bt-porTrasDaMarca");
-const modalPortfolio = document.getElementById("modal-portfolio");
-const modalPortfolioFecharBtn = modalPortfolio?.querySelector(".modal-portfolio-fechar");
-
-botaoPortfolio?.addEventListener("click", () => {
-  modalPortfolio.showModal();
-});
-
-function fecharModalPortfolio() {
-  if (modalPortfolio && modalPortfolio.open) modalPortfolio.close();
-}
-
-modalPortfolioFecharBtn?.addEventListener("click", fecharModalPortfolio);
-
-modalPortfolio?.addEventListener("click", (e) => {
-  if (e.target === modalPortfolio) {
-    fecharModalPortfolio();
+employeeModal?.addEventListener("click", (event) => {
+  if (event.target === employeeModal) {
+    closeEmployeeModal();
   }
 });
 
-modalPortfolio?.addEventListener("cancel", () => fecharModalPortfolio());
+employeeModal?.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeEmployeeModal();
+});
 
+// Portfolio modal
+const portfolioButton = document.querySelector(".bt-behind-the-brand");
+const portfolioModal = document.getElementById("modal-portfolio");
+const portfolioCloseBtn = portfolioModal?.querySelector(".modal-portfolio-close");
+
+portfolioButton?.addEventListener("click", () => {
+  if (!portfolioModal) return;
+
+  if (typeof portfolioModal.showModal === "function") {
+    portfolioModal.showModal();
+  } else {
+    portfolioModal.setAttribute("open", "");
+  }
+});
+
+function closePortfolioModal() {
+  if (!portfolioModal) return;
+
+  if (portfolioModal.open) {
+    try {
+      portfolioModal.close();
+    } catch {
+      portfolioModal.removeAttribute("open");
+    }
+  }
+}
+
+portfolioCloseBtn?.addEventListener("click", closePortfolioModal);
+
+portfolioModal?.addEventListener("click", (event) => {
+  if (event.target === portfolioModal) {
+    closePortfolioModal();
+  }
+});
+
+portfolioModal?.addEventListener("cancel", () => closePortfolioModal());
+
+// Header navigation (mobile menu)
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("header");
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector("#site-nav");
 
-  if (!toggle || !nav) return;
+  if (!header || !toggle || !nav) return;
 
   toggle.addEventListener("click", () => {
     const isOpen = header.classList.toggle("nav-open");
@@ -158,42 +188,42 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
       header.classList.remove("nav-open");
       toggle.setAttribute("aria-expanded", "false");
     }
   });
 });
 
-(function initDepoimentos() {
-  const mq = window.matchMedia("(max-width: 900px)");
-
-  const slides = Array.from(document.querySelectorAll(".depoimentos-div"));
+// Testimonials slider
+(function initTestimonials() {
+  const slides = Array.from(document.querySelectorAll(".testimonials-div"));
   if (!slides.length) return;
 
-  let idx = slides.findIndex((s) => s.classList.contains("active"));
-  if (idx < 0) idx = 0;
+  let currentIndex = slides.findIndex((slide) => slide.classList.contains("active"));
+  if (currentIndex < 0) currentIndex = 0;
 
-  function show() {
-    slides.forEach((s, i) => {
-      s.classList.toggle("active", i === idx);
-      s.setAttribute("aria-hidden", i === idx ? "false" : "true");
+  function showSlide() {
+    slides.forEach((slide, index) => {
+      const isActive = index === currentIndex;
+      slide.classList.toggle("active", isActive);
+      slide.setAttribute("aria-hidden", isActive ? "false" : "true");
     });
   }
 
-  const next = document.querySelector(".depo-next");
-  const prev = document.querySelector(".depo-prev");
+  const nextBtn = document.querySelector(".testimonials-next");
+  const prevBtn = document.querySelector(".testimonials-prev");
 
-  next?.addEventListener("click", () => {
-    idx = (idx + 1) % slides.length;
-    show();
+  nextBtn?.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide();
   });
 
-  prev?.addEventListener("click", () => {
-    idx = (idx - 1 + slides.length) % slides.length;
-    show();
+  prevBtn?.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide();
   });
 
-  show();
+  showSlide();
 })();

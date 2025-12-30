@@ -1,4 +1,4 @@
-# Agência Criativa Web
+# Creative Web Agency
 
 A modern, responsive digital agency website built as an educational project for the **Front-end Development course at EBAC (Responsive Websites module)**. The goal is to practice advanced layout techniques, interactive components, and clean front-end architecture.
 
@@ -24,26 +24,26 @@ The site is structured as a single-page experience with sections for hero, about
 
 - **Responsive Navigation**: Header with primary links and a clear call-to-action
 - **Hero Section**: High-impact headline, supporting text and main CTA buttons
-- **“Por Trás da Marca” (About) Section**: Grid highlighting leadership, team, and key case studies
-- **“Como Podemos te Ajudar” (Services) Section**: Interactive services carousel with dynamic details
+- **Behind the Brand Section**: Grid highlighting leadership, team, and key case studies
+- **How We Can Help Section**: Interactive services carousel with dynamic details
 - **Testimonials**: Short quotes from fictional clients to reinforce credibility
-- **Contact Section**: Contact details and a basic contact form
+- **Contact Section**: Contact details and an integrated contact form
 
 ---
 
 ### UI & UX
 
 - **Design System**  
-  Centralized CSS variables for colors, typography, spacing and shadows, making it easier to maintain consistency.
+  Centralized CSS variables for colors, typography, spacing and shadows, making it easier to maintain consistency across the entire site.
 
 - **Gradient-Driven Visual Style**  
-  Animated gradients on buttons and service cards for a modern, premium look.
+  Animated gradients on buttons and service cards create a modern, premium aesthetic that captures attention.
 
 - **Fluid Layout**  
-  Combination of Flexbox and CSS Grid to adapt content to different viewports without breaking the structure.
+  Combination of Flexbox and CSS Grid to adapt content to different viewports without breaking the structure or user experience.
 
 - **Micro-Interactions**  
-  Smooth transitions on hover states, cards, and content changes in the services section to make the interface feel more “alive”.
+  Smooth transitions on hover states, cards, and content changes in the services section make the interface feel polished and responsive.
 
 ---
 
@@ -52,71 +52,71 @@ The site is structured as a single-page experience with sections for hero, about
 - **Services Carousel**  
   A custom JavaScript carousel that:
 
-  - Highlights the active service card
-  - Adjusts opacity and scale of neighboring cards to create depth
-  - Updates a detailed information panel with icon, description and bullet points for each service
+  - Highlights the active service card with distinctive styling
+  - Adjusts opacity and scale of neighboring cards to create visual depth
+  - Updates a detailed information panel with icon, description and bullet points for each service in real-time
 
-- **Team Modals**  
-  “+” buttons on team members open a modal with:
+- **Team Member Modals**  
+  "+" buttons on team member cards open a modal displaying:
 
-  - Photo, name and role
+  - Professional photo, name and role
   - Short professional highlight text
-  - Bullet points with skills and experience
+  - Bullet points showcasing skills and expertise
 
 - **Portfolio Modal**  
-  A dedicated modal for the “Explore Portfolio” CTA, currently showing a “portfolio under construction” message and prepared for future expansion.
+  A dedicated modal for the "Explore Portfolio" call-to-action, currently showing a "portfolio under construction" message and prepared for future expansion.
 
-- **Service Modal**  
-  A simple informational modal linked to the services section, ready to display more detailed case information in the future.
+- **Service Details Modal**  
+  An informational modal linked to the services section, designed to display detailed case studies and service information in the future.
 
-All interactive behavior is implemented with **vanilla JavaScript** (no external libraries).
+All interactive behavior is implemented with **vanilla JavaScript** (no external dependencies).
 
 ---
 
 ### Responsiveness
 
 - **Breakpoint-Driven Layout**  
-  Main breakpoint around `900px` to adapt from desktop layout to tablet/mobile:
+  Main breakpoint around `900px` adapts the design from desktop to tablet/mobile:
 
-  - Header spacing and navigation adjusted for smaller screens
-  - Hero text and buttons realigned for better readability on narrow viewports
-  - Services section reflows so the carousel and details remain usable on mobile
+  - Header spacing and navigation restructured for smaller screens
+  - Hero text and buttons realigned for optimal readability on narrow viewports
+  - Services section reflows seamlessly, keeping the carousel and details usable on all devices
 
 - **Flexible Typography & Spacing**  
-  Font sizes and spacing were planned using a scale based on `rem`, keeping the design readable in different resolutions.
+  Font sizes and spacing are built on a modular `rem`-based scale, ensuring consistent readability across all screen sizes and resolutions.
 
 ---
 
 ## Technologies Used
 
-- **HTML5** – Semantic structure with sections for hero, about, services, testimonials and contact
+- **HTML5** – Semantic markup with structured sections for hero, about, services, testimonials and contact
 - **CSS3** –
-  - CSS Variables (custom properties)
-  - Flexbox and Grid for layout
-  - Transitions and keyframe animations for gradients and content changes
-  - Media Queries for responsive behavior
+  - CSS Variables (custom properties) for maintainable theming
+  - Flexbox and Grid for modern, responsive layouts
+  - Transitions and keyframe animations for smooth gradients and content changes
+  - Media Queries for mobile-first responsive design
 - **JavaScript (ES6+)** –
-  - Modular logic separated into files (`script.js` and `solucoes.js`)
-  - DOM manipulation and event handling
-  - Dynamic content updates (carousel, modals, details panel)
+  - Modular code split into focused files (`script.js` and `solutions.js`)
+  - Efficient DOM manipulation and event handling
+  - Dynamic content updates (carousel states, modal management, real-time details)
 
 ---
 
 ## Project Structure
 
 ```bash
-Agencia CriativaWeb/
+Creative-Web-Agency/
 ├── index.html          # Main page
 ├── README.md           # Project documentation
 ├── CSS/
-│   ├── reset.css       # Base style reset
-│   └── styles.css      # Theme, layout and animations
+│   ├── reset.css       # CSS reset for consistent cross-browser styling
+│   └── styles.css      # Complete theme, layout and animations
 ├── JS/
-│   ├── script.js       # Navigation, member modals and general interactions
-│   └── solucoes.js     # Services carousel and service modal
+│   ├── script.js       # Navigation, team modals and general interactions
+│   └── solutions.js    # Services carousel and service modal logic
 └── Assets/
-    ├── Icons/          # Service icons
-    └── ...             # Images and logo
+    ├── Icons/          # Service and brand icons
+    └── Images/         # Team photos and project showcases
 ```
 
 ---
@@ -129,7 +129,7 @@ Agencia CriativaWeb/
   - Header / navigation behavior
   - Team (members) modal logic
   - Portfolio modal behavior
-- `solucoes.js` handles:
+- `solutions.js` handles:
   - Services carousel states and animations
   - Dynamic update of the services details panel
   - Service modal logic
