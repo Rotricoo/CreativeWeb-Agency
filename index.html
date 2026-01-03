@@ -4,12 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CreativeWeb Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="CSS/reset.css" />
     <link rel="stylesheet" href="CSS/styles.css" />
   </head>
   <body>
+    <canvas class="bg__canvas" id="canvas" aria-hidden="true"></canvas>
     <header class="site-header">
-      <button class="site-header__toggle" aria-controls="site-nav" aria-expanded="false">MENU</button>
+      <button type="button" class="site-header__toggle" aria-controls="site-nav" aria-expanded="false">MENU</button>
 
       <img
         class="site-header__logo"
@@ -62,7 +66,14 @@
             />
             <p class="team__name">Matheus M.</p>
             <p class="team__role">Creative Director</p>
-            <button class="team__btn" data-member="matheus" aria-label="More information about Matheus M.">+</button>
+            <button
+              type="button"
+              class="team__btn"
+              data-member="matheus"
+              aria-label="More information about Matheus M."
+            >
+              +
+            </button>
           </div>
           <div class="team__card team__card-small">
             <img
@@ -74,7 +85,9 @@
             />
             <p class="team__name">Gleyce M.</p>
             <p class="team__role">Executive Director</p>
-            <button class="team__btn" data-member="gleyce" aria-label="More information about Gleyce M.">+</button>
+            <button type="button" class="team__btn" data-member="gleyce" aria-label="More information about Gleyce M.">
+              +
+            </button>
           </div>
           <div class="team__card team__card-small">
             <img
@@ -86,7 +99,14 @@
             />
             <p class="team__name">Henrique M.</p>
             <p class="team__role">Strategic Director</p>
-            <button class="team__btn" data-member="henrique" aria-label="More information about Henrique M.">+</button>
+            <button
+              type="button"
+              class="team__btn"
+              data-member="henrique"
+              aria-label="More information about Henrique M."
+            >
+              +
+            </button>
           </div>
           <div class="team__card team__card-large">
             <img
@@ -122,7 +142,9 @@
             />
             <p class="team__name">Paulo S.</p>
             <p class="team__role">Public Relations Lead</p>
-            <button class="team__btn" data-member="paulo" aria-label="More information about Paulo S.">+</button>
+            <button type="button" class="team__btn" data-member="paulo" aria-label="More information about Paulo S.">
+              +
+            </button>
           </div>
           <div class="team__card team__card-small team__card-small-last">
             <img
@@ -134,10 +156,17 @@
             />
             <p class="team__name">Rodrigo S.</p>
             <p class="team__role">Creative Designer</p>
-            <button class="team__btn" data-member="rodrigo" aria-label="More information about Rodrigo S.">+</button>
+            <button
+              type="button"
+              class="team__btn"
+              data-member="rodrigo"
+              aria-label="More information about Rodrigo S."
+            >
+              +
+            </button>
           </div>
         </div>
-        <button class="team__cta--btn btn btn--lg btn--primary">Explore portfolio</button>
+        <button type="button" class="team__cta--btn btn btn--lg btn--primary">Explore portfolio</button>
       </section>
 
       <!-- Solutions Section -->
@@ -160,13 +189,13 @@
             <p class="solutions__details--text"></p>
             <ul class="solutions__details--list"></ul>
 
-            <button class="solutions__bt">+</button>
+            <button type="button" class="solutions__bt">+</button>
           </div>
         </section>
       </section>
 
       <section class="testimonials">
-        <button class="testimonials__prev" aria-label="Previous Testimonial">‹</button>
+        <button type="button" class="testimonials__prev" aria-label="Previous Testimonial">‹</button>
         <div class="testimonials__track">
           <div class="testimonials__div testimonials__div--active">
             <img
@@ -200,7 +229,7 @@
             </div>
           </div>
         </div>
-        <button class="testimonials__next" aria-label="Next Testimonial">›</button>
+        <button type="button" class="testimonials__next" aria-label="Next Testimonial">›</button>
       </section>
 
       <section class="contact" id="contact">
@@ -242,7 +271,7 @@
                 rows="4"
                 required
               ></textarea>
-              <button class="form__div--btn btn btn--sm btn--primary" type="submit">Send Message</button>
+              <button type="submit" class="form__div--btn btn btn--sm btn--primary">Send Message</button>
             </form>
           </div>
         </div>
@@ -262,7 +291,7 @@
     <!-- modal employee -->
     <dialog class="modal__employee" id="modalEmployee" aria-labelledby="modalEmployee--title" aria-modal="true">
       <div class="modal__employee--content">
-        <button class="modal__employee--close">×</button>
+        <button type="button" class="modal__employee--close">×</button>
 
         <!-- Part 1 - Photo  -->
         <img class="modal__employee--photo" src="" alt="" />
@@ -283,7 +312,7 @@
     <!-- modal of solutions -->
     <dialog class="modal__solutions" id="modalSolutions" aria-labelledby="modal-solutions-label" aria-modal="true">
       <div class="modal__solutions--content">
-        <button class="modal__solutions--close">×</button>
+        <button type="button" class="modal__solutions--close">×</button>
         <h3 class="modal__solutions--title sr-only"></h3>
         <p id="modalSolutions--label" class="modal__solutions--text"></p>
       </div>
@@ -292,11 +321,14 @@
     <!-- Modal portfolio-->
     <dialog class="modal__portfolio" id="modalPortfolio" aria-labelledby="modalPortfolio--title" aria-modal="true">
       <div class="modal__portfolio--content">
-        <button class="modal__portfolio--close">×</button>
+        <button type="button" class="modal__portfolio--close">×</button>
         <h3 id="modalPortfolio--title" class="modal__portfolio--title">Portfolio under construction</h3>
       </div>
     </dialog>
 
+    <div class="custom-cursor" aria-hidden="true"></div>
+    <script src="JS/cursor.js"></script>
+    <script src="JS/bg-canvas.js"></script>
     <script src="JS/script.js"></script>
     <script src="JS/solutions.js"></script>
   </body>

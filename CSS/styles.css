@@ -6,6 +6,8 @@
   --purple-light: rgb(159, 121, 242);
   --purple-light-40: rgba(159, 121, 242, 0.4);
   --pink: rgb(190, 68, 241);
+  --gooey-color: rgb(131, 81, 242);
+  --cursor-color: var(--gooey-color);
 
   /* Scale Spacing */
   --space-1: 0.25rem;
@@ -25,9 +27,8 @@
 
   /* Font Weights */
   --bold-font: 700;
-  --medium-font: 500;
   --regular-font: 400;
-  --thin-font: 100;
+  --light-font: 300;
 
   /* Letter & Line Spacing */
   --spacing-small: 0.1rem; /* 2px */
@@ -45,18 +46,95 @@ html {
 
 body {
   color: white;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-    "Helvetica Neue", sans-serif;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
   margin: 2rem 5rem 0 5rem;
   padding: 0;
   box-sizing: border-box;
   background-color: black;
+  cursor: none;
+  /* text selection disabled */
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Text Selection */
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* Background Canvas */
+
+body > :not(.bg__canvas):not(.custom-cursor):not(dialog) {
+  position: relative;
+  z-index: 1;
+}
+
+.bg__canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  filter: contrast(3) saturate(1.05);
+  opacity: 0.8;
+}
+
+/* Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 999px;
+  background: var(--cursor-color, var(--purple-medium));
+  box-shadow: 0 0 50px var(--cursor-color, var(--purple-medium));
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 120ms ease, opacity 120ms ease, box-shadow 120ms ease;
+}
+
+.custom-cursor.custom-cursor--hover {
+  transform: translate(-50%, -50%) scale(2);
+  opacity: 0.9;
+}
+
+.custom-cursor.custom-cursor--down {
+  transform: translate(-50%, -50%) scale(1.3);
+  opacity: 1;
+}
+
+a,
+button,
+[role="button"],
+input,
+textarea,
+select,
+label,
+.btn,
+.solutions__card,
+.solutions__bt,
+.team__btn,
+.site-header__toggle,
+.modal__employee--close,
+.modal__portfolio--close,
+.modal__solutions--close,
+.site-header__link,
+.site-header__nav {
+  cursor: none !important;
 }
 
 /* Global Styles */
 
 button {
-  cursor: pointer;
   border: none;
 }
 
@@ -66,8 +144,7 @@ button {
   justify-content: center;
   border-radius: 999px;
   border: none;
-  cursor: pointer;
-  font-weight: var(--medium-font);
+  font-weight: var(--regular-font);
   text-decoration: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
 }
@@ -128,7 +205,7 @@ button {
   text-decoration: none;
   color: white;
   font-size: var(--font-size-small);
-  font-weight: 600;
+  font-weight: var(--bold-font);
 }
 
 .site-header__link:hover {
@@ -166,7 +243,7 @@ button {
 .hero__text {
   font-size: var(--font-size-xbody);
   line-height: var(--height-regular);
-  font-weight: var(--thin-font);
+  font-weight: var(--light-font);
   margin-bottom: 1rem;
   max-width: 40%;
   margin: 0 auto;
@@ -192,7 +269,7 @@ button {
 .team__text {
   font-size: var(--font-size-xbody);
   line-height: var(--height-regular);
-  font-weight: var(--thin-font);
+  font-weight: var(--light-font);
   margin-bottom: 3rem;
 }
 
@@ -245,13 +322,13 @@ button {
 .team__name {
   bottom: 2.2rem;
   font-size: var(--font-size-small);
-  font-weight: var(--medium-font);
+  font-weight: var(--regular-font);
 }
 
 .team__role {
   bottom: 1rem;
   font-size: var(--font-size-xsmall);
-  font-weight: var(--thin-font);
+  font-weight: var(--light-font);
 }
 
 .team__name-project {
@@ -315,7 +392,7 @@ button {
   text-align: center;
   font-size: var(--font-size-xbody);
   line-height: var(--height-regular);
-  font-weight: var(--thin-font);
+  font-weight: var(--light-font);
   max-width: 35rem;
   margin-bottom: 3rem;
 }
@@ -328,6 +405,7 @@ button {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0;
+  transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
 }
 
 .solutions__carousel {
@@ -344,10 +422,8 @@ button {
   display: flex;
   align-items: center;
   gap: 1rem;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-  transition: transform 0.4s ease, opacity 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease, opacity 0.4s ease;
 }
 
 .solutions__card + .solutions__card {
@@ -473,6 +549,7 @@ button {
   line-height: var(--height-regular);
   text-align: center;
   margin: 0;
+  padding: 0 1rem;
 }
 
 /* testimonials styles */
@@ -537,7 +614,7 @@ button {
 .contact__text {
   font-size: var(--font-size-xbody);
   line-height: var(--height-regular);
-  font-weight: var(--thin-font);
+  font-weight: var(--light-font);
   max-width: 50%;
   margin-bottom: 3rem;
 }
@@ -553,7 +630,7 @@ button {
 
 .contact__strong {
   font-size: var(--font-size-body);
-  font-weight: var(--medium-font);
+  font-weight: var(--regular-font);
   color: white;
   margin-bottom: 0.5rem;
 }
@@ -561,7 +638,7 @@ button {
 .contact__info {
   font-size: var(--font-size-xbody);
   line-height: var(--height-regular);
-  font-weight: var(--thin-font);
+  font-weight: var(--light-font);
   text-align: left;
   max-width: 100%;
   margin-bottom: 2rem;
@@ -593,7 +670,7 @@ button {
 
 .form__div--text {
   font-size: var(--font-size-body);
-  font-weight: var(--thin-font);
+  font-weight: var(--light-font);
   color: var(--purple-strong);
   margin-bottom: 1rem;
 }
@@ -648,7 +725,7 @@ button {
   text-decoration: none;
   color: white;
   font-size: var(--font-size-xsmall);
-  font-weight: 600;
+  font-weight: var(--bold-font);
 }
 
 .footer__link:hover {
@@ -806,7 +883,7 @@ dialog.modal__solutions::backdrop {
 
 .modal__employee--role {
   font-size: var(--font-size-xbody);
-  font-weight: var(--thin-font);
+  font-weight: var(--light-font);
   line-height: var(--height-tight);
   color: var(--gray);
 }
@@ -916,7 +993,6 @@ dialog.modal__solutions::backdrop {
     color: white;
     font-weight: var(--bold-font);
     border-radius: 1rem;
-    cursor: pointer;
     border: none;
   }
 
@@ -1196,7 +1272,6 @@ dialog.modal__solutions::backdrop {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     flex-shrink: 0;
     font-size: 1.25rem;
     margin: 0 0.75rem;

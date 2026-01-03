@@ -121,13 +121,15 @@ function updateCarousel() {
       card.classList.add("solutions__card--active");
       card.style.transform = "scale(1)";
       card.style.opacity = "1";
+      card.style.filter = "none";
     } else {
       const scale = 1 - distance * 0.05;
       const baseOpacity = 1 - distance * 0.2;
-      const finalOpacity = Math.max(baseOpacity, 0.1);
+      const dim = Math.max(1 - distance * 0.12, 0.72); // profundidade sem transparência
 
       card.style.transform = `scale(${scale})`;
-      card.style.opacity = String(finalOpacity);
+      card.style.opacity = "1";
+      card.style.filter = `brightness(${dim})`;
     }
   });
 

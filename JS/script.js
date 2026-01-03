@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = Array.from(document.querySelectorAll(".testimonials__div"));
   if (!slides.length) return;
 
-  let currentIndex = slides.findIndex((slide) => slide.classList.contains("active"));
+  let currentIndex = slides.findIndex((slide) => slide.classList.contains("testimonials__div--active"));
   if (currentIndex < 0) currentIndex = 0;
 
   function showSlide() {
