@@ -7,11 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="CSS/reset.css" />
     <link rel="stylesheet" href="CSS/styles.css" />
   </head>
   <body>
-    <canvas class="bg__canvas" id="canvas" aria-hidden="true"></canvas>
     <header class="site-header">
       <button type="button" class="site-header__toggle" aria-controls="site-nav" aria-expanded="false">MENU</button>
 
@@ -32,7 +30,7 @@
       <a class="site-header__contact btn btn--sm btn--secondary" href="#contact">Contact</a>
     </header>
 
-    <main>
+    <main class="main" id="main" tabindex="-1">
       <section class="hero" id="home">
         <img
           class="hero__logo hero__logo--mobile"
@@ -62,6 +60,7 @@
               src="Assets/Matheus.jpg"
               srcset="Assets/Matheus.jpg 1x"
               sizes="(max-width: 900px) 60vw, 20vw"
+              loading="lazy"
               alt="Portrait of Matheus M., Creative Director"
             />
             <p class="team__name">Matheus M.</p>
@@ -81,6 +80,7 @@
               src="Assets/Gleyce.jpg"
               srcset="Assets/Gleyce.jpg 1x"
               sizes="(max-width: 900px) 60vw, 20vw"
+              loading="lazy"
               alt="Portrait of Gleyce M., Executive Director"
             />
             <p class="team__name">Gleyce M.</p>
@@ -95,6 +95,7 @@
               src="Assets/Henrique.jpg"
               srcset="Assets/Henrique.jpg 1x"
               sizes="(max-width: 900px) 60vw, 20vw"
+              loading="lazy"
               alt="Portrait of Henrique M., Strategic Director"
             />
             <p class="team__name">Henrique M.</p>
@@ -114,6 +115,7 @@
               src="Assets/Solitude.jpg"
               srcset="Assets/Solitude.jpg 1x"
               sizes="(max-width: 900px) 60vw, 20vw"
+              loading="lazy"
               alt="Logo of the client Solitude"
             />
             <p class="team__name-project">Projects that drove brands</p>
@@ -127,6 +129,7 @@
               src="Assets/Crave.jpg"
               srcset="Assets/Crave.jpg 1x"
               sizes="(max-width: 900px) 60vw, 20vw"
+              loading="lazy"
               alt="Packaging of the product from the client Crave"
             />
             <p class="team__name-project">Projects that drove brands</p>
@@ -138,6 +141,7 @@
               src="Assets/Paulo.jpg"
               srcset="Assets/Paulo.jpg 1x"
               sizes="(max-width: 900px) 60vw, 20vw"
+              loading="lazy"
               alt="Portrait of Paulo S., Public Relations Lead"
             />
             <p class="team__name">Paulo S.</p>
@@ -152,6 +156,7 @@
               src="Assets/Rodrigo.jpg"
               srcset="Assets/Rodrigo.jpg 1x"
               sizes="(max-width: 900px) 60vw, 20vw"
+              loading="lazy"
               alt="Portrait of Rodrigo S., Creative Designer"
             />
             <p class="team__name">Rodrigo S.</p>
@@ -194,10 +199,11 @@
         </section>
       </section>
 
-      <section class="testimonials">
-        <button type="button" class="testimonials__prev" aria-label="Previous Testimonial">‹</button>
-        <div class="testimonials__track">
-          <div class="testimonials__div testimonials__div--active">
+      <!-- testimonials Section -->
+
+      <section class="testimonials" id="testimonials" aria-label="Testimonials">
+        <div class="testimonials__track" aria-live="polite">
+          <article class="testimonials__div" role="group" aria-roledescription="slide" aria-label="1 of 3">
             <img
               class="testimonials__img"
               src="Assets/MariaFernades.jpg"
@@ -206,13 +212,16 @@
               alt="Marketing Director Maria Fernandes"
             />
             <div class="testimonials__infos">
-              <p class="testimonials__name">Maria Fernandes, <strong>Marketing Director</strong></p>
+              <p class="testimonials__name">
+                Maria Fernandes, <strong class="testimonials__name--strong">Marketing Director</strong>
+              </p>
               <p class="testimonials__text">
-                “Amazing professionals. They helped us reposition our brand with clarity and impeccable visuals.”
+                “They helped us reposition our brand with clarity and impeccable visuals.”
               </p>
             </div>
-          </div>
-          <div class="testimonials__div">
+          </article>
+
+          <article class="testimonials__div" role="group" aria-roledescription="slide" aria-label="2 of 3">
             <img
               class="testimonials__img"
               src="Assets/LucasRibeiro.jpg"
@@ -221,15 +230,32 @@
               alt="CEO Lucas Ribeiro"
             />
             <div class="testimonials__infos">
-              <p class="testimonials__name">Lucas Ribeiro, <strong>CEO</strong></p>
+              <p class="testimonials__name">Lucas Ribeiro, <strong class="testimonials__name--strong">CEO</strong></p>
               <p class="testimonials__text">
                 “The website became fast, modern, and much more functional. The final experience exceeded our
                 expectations.”
               </p>
             </div>
-          </div>
+          </article>
+
+          <article class="testimonials__div" role="group" aria-roledescription="slide" aria-label="3 of 3">
+            <img
+              class="testimonials__img"
+              src="Assets/MariaFernades.jpg"
+              srcset="Assets/MariaFernades.jpg 1x"
+              sizes="(max-width: 900px) 60vw, 20vw"
+              alt="Marketing Director Paula Ribeiro"
+            />
+            <div class="testimonials__infos">
+              <p class="testimonials__name">
+                Paula Ribeiro, <strong class="testimonials__name--strong">Director of Operations</strong>
+              </p>
+              <p class="testimonials__text">
+                “They helped us reposition our brand with clarity and impeccable visuals.”
+              </p>
+            </div>
+          </article>
         </div>
-        <button type="button" class="testimonials__next" aria-label="Next Testimonial">›</button>
       </section>
 
       <section class="contact" id="contact">
@@ -238,7 +264,7 @@
           We are here to help you take the next step with strategy, clarity, and smart design.
         </p>
 
-        <div class="contact__div">
+        <div class="contact__info-group">
           <div>
             <p class="contact__info contact__address">
               <strong class="contact__strong"> Address:</strong> <br />203 McLand - Cityland, 3203 <br />Countryland -
@@ -259,19 +285,32 @@
             </p>
           </div>
 
-          <div class="form__div">
-            <h3 class="form__div--title">Send a Message</h3>
-            <p class="form__div--text">Tell us about your project. We respond as quickly as possible.</p>
-            <form class="form__div--contact" action="">
-              <input class="form__div--input" type="text" placeholder="Name" required />
-              <input class="form__div--input" type="email" placeholder="Email" required />
-              <textarea
-                class="form__div--textarea"
-                placeholder="Write your message here..."
-                rows="4"
-                required
-              ></textarea>
-              <button type="submit" class="form__div--btn btn btn--sm btn--primary">Send Message</button>
+          <div class="contact__form">
+            <h3 class="contact__form--title">Send a Message</h3>
+            <p class="contact__form--text">Tell us about your project. We respond as quickly as possible.</p>
+            <form class="contact__form--contact" id="contactForm">
+              <div class="contact__form--field">
+                <label for="contact-name" class="sr-only">Name</label>
+                <input class="contact__form--input" type="text" id="contact-name" placeholder="Name" required />
+              </div>
+
+              <div class="contact__form--field">
+                <label for="contact-email" class="sr-only">Email</label>
+                <input class="contact__form--input" type="email" id="contact-email" placeholder="Email" required />
+              </div>
+
+              <div class="contact__form--field">
+                <label for="contact-message" class="sr-only">Message</label>
+                <textarea
+                  class="contact__form--textarea"
+                  id="contact-message"
+                  placeholder="Write your message here..."
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+
+              <button type="submit" class="contact__form--btn btn btn--sm btn--primary">Send Message</button>
             </form>
           </div>
         </div>
@@ -326,10 +365,10 @@
       </div>
     </dialog>
 
-    <div class="custom-cursor" aria-hidden="true"></div>
-    <script src="JS/cursor.js"></script>
-    <script src="JS/bg-canvas.js"></script>
     <script src="JS/script.js"></script>
-    <script src="JS/solutions.js"></script>
+    <script src="JS/team-section.js"></script>
+    <script src="JS/solutions-section.js"></script>
+    <script src="JS/testimonial-section.js"></script>
+    <script src="JS/contact-form.js"></script>
   </body>
 </html>

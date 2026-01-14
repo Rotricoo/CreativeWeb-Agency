@@ -1,0 +1,38 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+.footer {
+  text-align: center;
+  padding: 2rem;
+  margin-top: 5rem;
+  border-top: 1px solid $color--purple-medium;
+}
+
+.footer__nav {
+  @include mixins.flex-center;
+  gap: 3rem;
+  margin-bottom: 1.3rem;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: $color--white;
+  font-size: $font-size-medium;
+  font-weight: $bold;
+}
+
+.footer__link:hover {
+  color: $color--gray;
+}
+
+.footer__text {
+  font-size: $font-size-small;
+  color: $color--gray;
+  margin-bottom: 0.5rem;
+}
+
+.footer__rights {
+  font-size: $font-size-small;
+  color: $color--gray;
+  margin: 0;
+}

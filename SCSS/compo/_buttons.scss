@@ -1,0 +1,23 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+.btn--sm {
+  background: $color--white;
+  @include mixins.btn-base;
+  @include mixins.btn-base--sm-hover;
+  padding: 0.5rem 1.5rem;
+}
+
+.btn--lg {
+  @include mixins.bg-gradient($animation: false);
+  @include mixins.btn-base;
+  @include mixins.btn-base--lg-hover;
+  @include mixins.transition;
+  color: $color--white;
+}
+
+.btn--sm:focus-visible,
+.btn--lg:focus-visible {
+  outline: 2px solid $color--purple-strong;
+  outline-offset: 2px;
+}

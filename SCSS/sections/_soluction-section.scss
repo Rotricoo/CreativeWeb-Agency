@@ -1,0 +1,187 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+.solutions {
+  @include mixins.flex-center;
+  flex-direction: column;
+  padding: calc($spacing-large * 2) 0 calc($spacing-large * 2) 0;
+}
+
+.solutions__title {
+  font-size: $font-size-h2;
+  letter-spacing: $letter-spacing-small;
+  margin-bottom: 0.5rem;
+}
+
+.solutions__text {
+  font-size: $font-size-body-lg;
+  line-height: $height-regular;
+  font-weight: $light;
+  text-align: center;
+  max-width: min(60ch, 60%);
+  margin-bottom: 3rem;
+}
+
+.solutions__cards {
+  @include mixins.transition;
+  display: flex;
+  flex-direction: row;
+  gap: $spacing-xlarge;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.solutions__carousel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $spacing-base; // 1rem
+}
+
+.solutions__card {
+  @include mixins.transition;
+  @include mixins.border-radius(1.5rem);
+  @include mixins.bg-gradient;
+  @include mixins.box-shadow;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  gap: $spacing-base;
+  color: $color--white;
+  padding: $spacing-base $spacing-xlarge;
+}
+
+.solutions__card + .solutions__card {
+  margin-top: -1.5rem;
+}
+
+.solutions__card img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.solutions__card--active {
+  @include mixins.border--purple;
+  @include mixins.box-shadow;
+  opacity: 1;
+  transform: scale(1);
+  position: relative;
+  z-index: 2;
+}
+
+.solutions__details {
+  @include mixins.transition;
+  @include mixins.border-radius(1.5rem);
+  @include mixins.bg-gradient($animation: true, $animation-time: 3s);
+  @include mixins.flex-center;
+  @include mixins.border--purple;
+  @include mixins.box-shadow($shadowX: 0px, $shadowY: 0px, $blur: 0px, $color: rgba(0, 0, 0, 0.6));
+  gap: $spacing-base;
+  position: relative;
+  align-items: flex-start;
+  flex: 1;
+  padding: 2.5rem;
+  flex-direction: column;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.solutions__details--animation {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.solutions__details--top {
+  @include mixins.flex-center;
+  gap: $spacing-base;
+  margin-bottom: 0.5rem;
+}
+
+.solutions__details--icon {
+  @include mixins.border-radius;
+  background-color: $color--white;
+  width: 3rem;
+  height: 3rem;
+  padding: 0.2rem;
+  backdrop-filter: blur(10px);
+  filter: contrast(50%);
+}
+
+.solutions__details--title {
+  font-size: $font-size-body-lg;
+  letter-spacing: $letter-spacing-tight;
+  font-weight: $bold;
+  text-align: left;
+}
+
+.solutions__details--text,
+.solutions__details--list {
+  color: $color--gray;
+  font-size: $font-size-body;
+  font-weight: $regular;
+  line-height: $height-regular;
+  max-width: min(80ch, 100%);
+}
+
+.solutions__details--list {
+  font-weight: $bold;
+  margin: 0;
+  padding-left: 1rem;
+  list-style: none;
+}
+
+.solutions__details--list li {
+  margin-bottom: 1rem;
+  padding-left: 1.7rem;
+  position: relative;
+}
+
+.solutions__details--list li::before {
+  content: "";
+  @include mixins.border-radius(0.2rem);
+  background: $color--gray;
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  width: 1.2rem;
+  height: 1.2rem;
+  box-sizing: border-box;
+}
+
+.solutions__bt {
+  @include mixins.border-radius(999px);
+  @include mixins.flex-center;
+  @include mixins.transition;
+  @include mixins.border--light($width: 0.1rem);
+  width: 3rem;
+  height: 3rem;
+  align-self: flex-end;
+  margin-top: 1.5rem;
+  justify-content: center;
+  background: white;
+  color: $color--purple-strong;
+  font-weight: $bold;
+  font-size: $font-size-body;
+}
+
+.solutions__bt:hover {
+  @include mixins.btn-base--sm-hover;
+  @include mixins.border--light;
+  @include mixins.box-shadow($shadowX: 0px, $shadowY: 4px, $blur: 12px, $color: rgba(0, 0, 0, 0.3));
+  transform: translateY(-1px);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

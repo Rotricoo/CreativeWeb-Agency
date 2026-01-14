@@ -1,0 +1,134 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+.contact {
+  @include mixins.flex-center;
+  flex-direction: column;
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.contact__title {
+  font-size: $font-size-h2;
+  letter-spacing: $letter-spacing-small;
+}
+
+.contact__text {
+  font-size: $font-size-body-lg;
+  line-height: $height-regular;
+  font-weight: $light;
+  max-width: min(40ch, 50%);
+  margin-bottom: 3rem;
+}
+
+.contact__info-group {
+  @include mixins.flex-center;
+  gap: $spacing-base;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.contact__strong {
+  font-size: $font-size-body-lg;
+  font-weight: $regular;
+  color: $color--white;
+  margin-bottom: 0.5rem;
+}
+
+.contact__info {
+  font-size: $font-size-body;
+  line-height: $height-regular;
+  font-weight: $light;
+  text-align: left;
+  max-width: 90ch;
+  margin-bottom: 2rem;
+}
+
+.contact__link {
+  text-decoration: none;
+  color: $color--gray;
+}
+
+.contact__form {
+  @include mixins.border-radius(1.5rem);
+  @include mixins.flex-center($align: flex-start);
+  flex-direction: column;
+  text-align: left;
+  background-color: $color--gray;
+  padding: 1.5rem;
+  max-width: 600px;
+  width: 75%;
+}
+
+.contact__form--title {
+  font-size: $font-size-h3;
+  letter-spacing: $spacing-small;
+  color: $color--purple-strong;
+  margin-bottom: 0;
+}
+
+.contact__form--text {
+  font-size: $font-size-body;
+  font-weight: $light;
+  color: $color--purple-strong;
+  margin-bottom: 1rem;
+}
+
+.contact__form--contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  height: auto;
+}
+
+.contact__form--input {
+  @include mixins.border-radius(0.8rem);
+  padding: 0.5rem;
+  border: none;
+  font-size: $font-size-body;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.contact__form--textarea {
+  @include mixins.border-radius;
+  padding: 0.5rem;
+  border: none;
+  font-size: $font-size-body;
+  resize: vertical;
+  min-height: 100px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.contact__form--btn {
+  margin-top: 0.5rem;
+  align-self: flex-end;
+}
+
+.contact__form--field {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-small;
+  width: 100%;
+  margin-bottom: $spacing-base;
+}
+
+.contact__form--success {
+  font-size: $font-size-body;
+  font-weight: $bold;
+  color: #51cf66;
+  text-align: center;
+  margin-top: $spacing-large;
+  padding: $spacing-base;
+  animation: fadeIn 300ms ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

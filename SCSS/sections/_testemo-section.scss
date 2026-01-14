@@ -1,0 +1,61 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+.testimonials {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  padding: $spacing-base $spacing-xlarge;
+}
+
+.testimonials__track {
+  display: flex;
+  gap: $spacing-large;
+  transition: transform 200ms ease-in-out;
+  will-change: transform;
+  box-sizing: border-box;
+}
+
+.testimonials__div {
+  @include mixins.border-radius(1.5rem);
+  @include mixins.bg-gradient;
+  padding: $spacing-xlarge $spacing-large;
+  gap: $spacing-base;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex: 0 0 calc((100% - #{($spacing-large * 2)}) / 3);
+  max-width: 100%;
+  min-width: 0;
+}
+
+.testimonials__img {
+  @include mixins.border-radius;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  filter: grayscale(0.9);
+  flex: none;
+}
+
+.testimonials__infos {
+  flex: 1 1 0;
+  min-width: 0;
+  margin-left: 1rem;
+}
+
+.testimonials__name {
+  font-size: $font-size-body;
+  font-weight: $regular;
+  margin-bottom: $spacing-small;
+}
+
+.testimonials__name--strong {
+  font-weight: $bold;
+}
+
+.testimonials__text {
+  font-size: $font-size-medium;
+  font-weight: $regular;
+  line-height: $height-loose;
+}

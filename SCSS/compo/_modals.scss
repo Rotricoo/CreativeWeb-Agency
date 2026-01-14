@@ -1,0 +1,75 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+dialog {
+  color: $color--white;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+dialog.modal__employee,
+dialog.modal__portfolio,
+dialog.modal__solutions {
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+}
+
+dialog.modal__employee[open],
+dialog.modal__portfolio[open],
+dialog.modal__solutions[open] {
+  display: grid;
+  place-items: center;
+}
+
+dialog.modal__employee::backdrop,
+dialog.modal__portfolio::backdrop,
+dialog.modal__solutions::backdrop {
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.modal__employee--content {
+  @include mixins.modal-content($max: 700px, $pad: 2rem, $display: grid);
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+}
+
+.modal__solutions--content {
+  @include mixins.modal-content($max: 600px);
+}
+
+.modal__portfolio--content {
+  @include mixins.modal-content($max: 500px, $pad: 3rem, $display: flex);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.modal__employee--photo {
+  grid-row: 1/3;
+  width: 170px;
+  height: 250px;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.modal__employee--close,
+.modal__portfolio--close,
+.modal__solutions--close {
+  @include mixins.modal-close();
+}
+
+.modal__solutions--text {
+  font-size: $font-size-body-lg;
+  font-weight: $bold;
+  line-height: $height-regular;
+  text-align: center;
+  margin: 0;
+  padding: 0 1rem;
+}

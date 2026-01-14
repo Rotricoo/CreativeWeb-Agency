@@ -1,0 +1,30 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+.hero {
+  padding: calc($spacing-base * 5) $spacing-xlarge; // 5rem 2rem
+  margin: calc($spacing-base * 5) 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.hero__logo--mobile {
+  display: none;
+}
+
+.hero__title {
+  font-size: $font-size-h1;
+  line-height: $height-tight;
+  letter-spacing: $letter-spacing-small;
+  margin-bottom: 1rem;
+}
+
+.hero__text {
+  font-size: $font-size-body-lg;
+  line-height: $height-regular;
+  font-weight: $light;
+  margin: 0 auto 1rem;
+  max-width: min(80ch, 60%);
+}

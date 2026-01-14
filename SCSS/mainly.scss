@@ -1,0 +1,21 @@
+@use "reset"; // Reset CSS
+@use "global"; // Global Styles
+@use "var" as *; // Variables (colors, fonts, spacing, etc)
+@use "mixins" as mixins; // Mixins
+
+// Components
+@use "compo/buttons";
+@use "compo/modals";
+
+// sections of the site
+@use "sections/header-section";
+@use "sections/hero-section";
+@use "sections/team-section";
+@use "sections/soluction-section";
+@use "sections/testemo-section";
+@use "sections/contact-section";
+@use "sections/footer-section";
+
+// medias queries
+@use "medias/media-900px";
+@use "medias/media-405px";

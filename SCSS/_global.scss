@@ -1,0 +1,37 @@
+@use "var" as *;
+@use "mixins" as mixins;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: $color--white;
+  background-color: $color--black;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  line-height: $height-regular;
+  margin: 2rem 5rem 0 5rem;
+  padding: 0;
+  box-sizing: border-box;
+  // blocking text selection globally except for inputs and textareas
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+}
+
+input,
+textarea,
+select,
+[contenteditable="true"] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+}

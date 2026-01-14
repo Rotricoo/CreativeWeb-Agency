@@ -1,0 +1,8 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+@media (max-width: 405px) {
+  .testimonials__track {
+    min-height: 250px;
+  }
+}

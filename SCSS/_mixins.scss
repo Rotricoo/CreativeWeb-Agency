@@ -1,0 +1,139 @@
+@use "var" as *;
+
+/* Mixin Constructions */
+
+@mixin flex-center($display: flex, $align: center, $justify: center) {
+  display: $display;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin text-shadow($shadowX: 1px, $shadowY: 1px, $blur: 4px, $color: rgba(0, 0, 0, 0.7)) {
+  text-shadow: $shadowX $shadowY $blur $color;
+}
+
+@mixin box-shadow($shadowX: 0px, $shadowY: 8px, $blur: 16px, $color: rgba(0, 0, 0, 0.3)) {
+  box-shadow: $shadowX $shadowY $blur $color;
+}
+
+@mixin border--light($width: 1px, $style: solid, $color: $color--white) {
+  border: $width $style $color;
+}
+
+@mixin border--purple($width: 1px, $style: solid, $color: $color--purple-medium) {
+  border: $width $style $color;
+}
+
+@mixin border-radius($radius: 1rem) {
+  border-radius: $radius;
+}
+
+@mixin bg-gradient(
+  $from: $color--purple-medium,
+  $mid: $color--purple-light,
+  $to: $color--pink,
+  $animation: true,
+  $animation-time: 8s
+) {
+  background: linear-gradient(to right, $from, $mid, $to);
+  @if $animation {
+    background-size: 150% 100%;
+    animation: btnGradient $animation-time ease-in-out infinite alternate;
+  }
+}
+
+@keyframes btnGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+@mixin transition($props: all, $dur: 500ms, $ease: ease) {
+  transition: $props $dur $ease;
+}
+
+@mixin animation($name, $dur: 1s, $ease: ease-in-out, $iter: infinite, $fill: forwards) {
+  animation: $name $dur $ease $iter $fill;
+}
+
+@mixin breakpoint($max) {
+  @media (max-width: $max) {
+    @content;
+  }
+}
+
+/* Mixin buttons */
+
+@mixin btn-size($pY, $pX, $font, $weight) {
+  padding: $pY $pX;
+  font-size: $font;
+  font-weight: $weight;
+}
+
+@mixin btn-base {
+  @include btn-size($pY: $spacing-base, $pX: $spacing-xlarge, $font: $font-size-body, $weight: $bold);
+  @include border-radius(5rem);
+  @include transition;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  text-decoration: none;
+}
+
+@mixin btn-base--sm-hover {
+  &:hover {
+    @include bg-gradient;
+    color: white;
+  }
+}
+
+@mixin btn-base--lg-hover(
+  $scale: 1.05,
+  $shadow-size: 0 10px 24px,
+  $shadow-blur: 30px,
+  $shadow-color: rgba(0, 0, 0, 0.4)
+) {
+  &:hover {
+    transform: scale($scale);
+    box-shadow: $shadow-size $shadow-blur $shadow-color;
+  }
+}
+
+/* Mixin Modals */
+
+@mixin modal-content($max: 700px, $pad: 2rem, $display: flex) {
+  @include bg-gradient($animation: false);
+  @include border-radius(1.5rem);
+  position: relative;
+  z-index: 1;
+  width: min(92%, $max);
+  max-width: $max;
+  margin: 0;
+  padding: $pad;
+  box-sizing: border-box;
+  display: $display;
+  gap: 1rem;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none !important;
+  }
+}
+
+@mixin modal-close() {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  color: $color--purple-strong;
+  font-size: calc($font-size-medium * 2);
+  font-weight: $bold;
+  border: none;
+  cursor: pointer;
+  &:focus-visible {
+    outline: 2px solid $color--purple-strong;
+    outline-offset: 2px;
+  }
+}
