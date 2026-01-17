@@ -10,28 +10,42 @@
     <link rel="stylesheet" href="CSS/styles.css" />
   </head>
   <body>
-    <header class="site-header">
-      <button type="button" class="site-header__toggle" aria-controls="site-nav" aria-expanded="false">MENU</button>
+    <!-- Navigation Sidebar -->
+    <nav class="nav-sidebar" id="navSideBar" aria-label="Section navigation">
+      <ol class="nav-sidebar__list">
+        <li class="nav-sidebar__item">
+          <a class="nav-sidebar__link" href="#home">
+            <span class="nav-sidebar__dot" aria-hidden="true"></span>
+            <span class="nav-sidebar__label">Home</span>
+          </a>
+        </li>
 
-      <img
-        class="site-header__logo"
-        src="Assets/@LogoBW-CreativeWebAgency.svg"
-        srcset="Assets/@LogoBW-CreativeWebAgency.svg 1x"
-        sizes="(max-width: 900px) 60vw, 20vw"
-        alt="CreativeWeb Agency Logo"
-      />
+        <li class="nav-sidebar__item">
+          <a class="nav-sidebar__link" href="#behindTheBrand">
+            <span class="nav-sidebar__dot" aria-hidden="true"></span>
+            <span class="nav-sidebar__label">About Us</span>
+          </a>
+        </li>
 
-      <nav class="site-header__nav" id="site-nav">
-        <a class="site-header__link" href="#home">Home</a>
-        <a class="site-header__link" href="#behindTheBrand">Behind the Brand</a>
-        <a class="site-header__link" href="#solutions">Solutions</a>
-        <a class="site-header__link btn--contact--mobile" href="#contact">Contact</a>
-      </nav>
-      <a class="site-header__contact btn btn--sm btn--secondary" href="#contact">Contact</a>
-    </header>
+        <li class="nav-sidebar__item">
+          <a class="nav-sidebar__link" href="#solutions">
+            <span class="nav-sidebar__dot" aria-hidden="true"></span>
+            <span class="nav-sidebar__label">Solutions</span>
+          </a>
+        </li>
 
-    <main class="main" id="main" tabindex="-1">
-      <section class="hero" id="home">
+        <li class="nav-sidebar__item">
+          <a class="nav-sidebar__link" href="#contact">
+            <span class="nav-sidebar__dot" aria-hidden="true"></span>
+            <span class="nav-sidebar__label">Contact</span>
+          </a>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- Main Scroll Container -->
+    <main class="snap-container" id="main" tabindex="-1">
+      <section class="hero snap-section" id="home">
         <img
           class="hero__logo hero__logo--mobile"
           src="Assets/@LogoBW-CreativeWebAgency.svg"
@@ -47,8 +61,8 @@
         <a class="hero__cta btn btn--lg btn--primary" href="#solutions">Explore our solutions</a>
       </section>
 
-      <!-- Behind the Brand - Team Section -->
-      <section class="team" id="behindTheBrand">
+      <!-- Team Section -->
+      <section class="team snap-section" id="behindTheBrand">
         <h2 class="team__title">Building brands that lead.</h2>
         <p class="team__text">
           We plan, create, and deliver digital experiences that solve real problems and drive results.
@@ -174,9 +188,8 @@
         <button type="button" class="team__cta--btn btn btn--lg btn--primary">Explore portfolio</button>
       </section>
 
-      <!-- Solutions Section -->
-
-      <section class="solutions" id="solutions">
+      <!-- Solutions and Testimonials Section -->
+      <section class="solutions snap-section" id="solutions">
         <h2 class="solutions__title">How we can help you</h2>
         <p class="solutions__text">
           Complete solutions to strengthen your brand, elevate your digital presence, and create experiences that
@@ -197,68 +210,68 @@
             <button type="button" class="solutions__bt">+</button>
           </div>
         </section>
-      </section>
 
-      <!-- testimonials Section -->
+        <div class="solutions__testimonials" id="testimonials" aria-label="Testimonials">
+          <div class="solutions__testimonials--track" aria-live="polite">
+            <article class="solutions__testimonials--div" role="group" aria-roledescription="slide" aria-label="1 of 3">
+              <img
+                class="solutions__testimonials--img"
+                src="Assets/MariaFernades.jpg"
+                srcset="Assets/MariaFernades.jpg 1x"
+                sizes="(max-width: 900px) 60vw, 20vw"
+                alt="Marketing Director Maria Fernandes"
+              />
+              <div class="solutions__testimonials--infos">
+                <p class="solutions__testimonials--name">
+                  Maria Fernandes, <strong class="solutions__testimonials--name--strong">Marketing Director</strong>
+                </p>
+                <p class="solutions__testimonials--text">
+                  “They helped us reposition our brand with clarity and impeccable visuals.”
+                </p>
+              </div>
+            </article>
 
-      <section class="testimonials" id="testimonials" aria-label="Testimonials">
-        <div class="testimonials__track" aria-live="polite">
-          <article class="testimonials__div" role="group" aria-roledescription="slide" aria-label="1 of 3">
-            <img
-              class="testimonials__img"
-              src="Assets/MariaFernades.jpg"
-              srcset="Assets/MariaFernades.jpg 1x"
-              sizes="(max-width: 900px) 60vw, 20vw"
-              alt="Marketing Director Maria Fernandes"
-            />
-            <div class="testimonials__infos">
-              <p class="testimonials__name">
-                Maria Fernandes, <strong class="testimonials__name--strong">Marketing Director</strong>
-              </p>
-              <p class="testimonials__text">
-                “They helped us reposition our brand with clarity and impeccable visuals.”
-              </p>
-            </div>
-          </article>
+            <article class="solutions__testimonials--div" role="group" aria-roledescription="slide" aria-label="2 of 3">
+              <img
+                class="solutions__testimonials--img"
+                src="Assets/LucasRibeiro.jpg"
+                srcset="Assets/LucasRibeiro.jpg 1x"
+                sizes="(max-width: 900px) 60vw, 20vw"
+                alt="CEO Lucas Ribeiro"
+              />
+              <div class="solutions__testimonials--infos">
+                <p class="solutions__testimonials--name">
+                  Lucas Ribeiro, <strong class="solutions__testimonials--name--strong">CEO</strong>
+                </p>
+                <p class="solutions__testimonials--text">
+                  “The website became fast, modern, and much more functional. The final experience exceeded our
+                  expectations.”
+                </p>
+              </div>
+            </article>
 
-          <article class="testimonials__div" role="group" aria-roledescription="slide" aria-label="2 of 3">
-            <img
-              class="testimonials__img"
-              src="Assets/LucasRibeiro.jpg"
-              srcset="Assets/LucasRibeiro.jpg 1x"
-              sizes="(max-width: 900px) 60vw, 20vw"
-              alt="CEO Lucas Ribeiro"
-            />
-            <div class="testimonials__infos">
-              <p class="testimonials__name">Lucas Ribeiro, <strong class="testimonials__name--strong">CEO</strong></p>
-              <p class="testimonials__text">
-                “The website became fast, modern, and much more functional. The final experience exceeded our
-                expectations.”
-              </p>
-            </div>
-          </article>
-
-          <article class="testimonials__div" role="group" aria-roledescription="slide" aria-label="3 of 3">
-            <img
-              class="testimonials__img"
-              src="Assets/MariaFernades.jpg"
-              srcset="Assets/MariaFernades.jpg 1x"
-              sizes="(max-width: 900px) 60vw, 20vw"
-              alt="Marketing Director Paula Ribeiro"
-            />
-            <div class="testimonials__infos">
-              <p class="testimonials__name">
-                Paula Ribeiro, <strong class="testimonials__name--strong">Director of Operations</strong>
-              </p>
-              <p class="testimonials__text">
-                “They helped us reposition our brand with clarity and impeccable visuals.”
-              </p>
-            </div>
-          </article>
+            <article class="solutions__testimonials--div" role="group" aria-roledescription="slide" aria-label="3 of 3">
+              <img
+                class="solutions__testimonials--img"
+                src="Assets/MariaFernades.jpg"
+                srcset="Assets/MariaFernades.jpg 1x"
+                sizes="(max-width: 900px) 60vw, 20vw"
+                alt="Marketing Director Paula Ribeiro"
+              />
+              <div class="solutions__testimonials--infos">
+                <p class="solutions__testimonials--name">
+                  Paula Ribeiro, <strong class="solutions__testimonials--name--strong">Director of Operations</strong>
+                </p>
+                <p class="solutions__testimonials--text">
+                  “They helped us reposition our brand with clarity and impeccable visuals.”
+                </p>
+              </div>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="contact" id="contact">
+      <section class="contact snap-section" id="contact">
         <h2 class="contact__title">Ready to transform your brand?</h2>
         <p class="contact__text">
           We are here to help you take the next step with strategy, clarity, and smart design.
@@ -314,18 +327,14 @@
             </form>
           </div>
         </div>
+
+        <footer class="footer">
+          <div class="footer__line"></div>
+          <p class="footer__text">Creative Web Agency — Creating digital experiences that drive brands</p>
+          <p class="footer__rights">© 2025 Creative Web Agency. All rights reserved.</p>
+        </footer>
       </section>
     </main>
-
-    <footer class="footer">
-      <nav class="footer__nav">
-        <a href="#home" class="footer__link">Home</a>
-        <a href="#behindTheBrand" class="footer__link">Behind the Brand</a>
-        <a href="#solutions" class="footer__link">Solutions</a>
-      </nav>
-      <p class="footer__text">Creative Web Agency — Creating digital experiences that drive brands</p>
-      <p class="footer__rights">© 2025 Creative Web Agency. All rights reserved.</p>
-    </footer>
 
     <!-- modal employee -->
     <dialog class="modal__employee" id="modalEmployee" aria-labelledby="modalEmployee--title" aria-modal="true">
@@ -365,10 +374,10 @@
       </div>
     </dialog>
 
-    <script src="JS/script.js"></script>
+    <!-- Scripts -->
+    <script src="JS/nav-sidebar.js"></script>
     <script src="JS/team-section.js"></script>
     <script src="JS/solutions-section.js"></script>
-    <script src="JS/testimonial-section.js"></script>
     <script src="JS/contact-form.js"></script>
   </body>
 </html>

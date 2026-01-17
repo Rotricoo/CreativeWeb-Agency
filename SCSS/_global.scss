@@ -1,25 +1,38 @@
 @use "var" as *;
 @use "mixins" as mixins;
 
+// ============================================
+// Global Styles
+// ============================================
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
+  /* Typography */
   color: $color--white;
-  background-color: $color--black;
+  line-height: $height-regular;
   font-family: "Lato", sans-serif;
   font-style: normal;
-  line-height: $height-regular;
-  margin: 2rem 5rem 0 5rem;
+
+  /* Layout - Fixed viewport to prevent double scroll */
+  background-color: $color--black;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden; // Scroll handled by .snap-container
+  height: 100svh; // Small viewport height for mobile compatibility
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
-  // blocking text selection globally except for inputs and textareas
+
+  /* User interaction */
   -webkit-user-select: none;
   user-select: none;
   -webkit-touch-callout: none;
 }
 
+/* Allow text selection in form elements */
 input,
 textarea,
 select,
@@ -28,6 +41,7 @@ select,
   user-select: text;
 }
 
+/* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

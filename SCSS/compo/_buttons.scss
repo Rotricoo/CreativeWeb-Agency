@@ -1,6 +1,10 @@
 @use "../var" as *;
 @use "../mixins" as mixins;
 
+/* Buttons component
+   - .btn--sm: subtle button, light background
+   - .btn--lg: primary button, gradient background + hover scale
+*/
 .btn--sm {
   background: $color--white;
   @include mixins.btn-base;
@@ -9,13 +13,14 @@
 }
 
 .btn--lg {
-  @include mixins.bg-gradient($animation: false);
+  @include mixins.bg-gradient($animation: true);
   @include mixins.btn-base;
   @include mixins.btn-base--lg-hover;
   @include mixins.transition;
   color: $color--white;
 }
 
+/* Focus-visible accessibility outline */
 .btn--sm:focus-visible,
 .btn--lg:focus-visible {
   outline: 2px solid $color--purple-strong;

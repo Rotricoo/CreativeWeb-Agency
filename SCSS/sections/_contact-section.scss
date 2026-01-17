@@ -5,7 +5,7 @@
   @include mixins.flex-center;
   flex-direction: column;
   text-align: center;
-  padding: 5rem 2rem;
+  padding: 10rem 2rem 0 2rem;
 }
 
 .contact__title {
@@ -21,19 +21,19 @@
   margin-bottom: 3rem;
 }
 
-.contact__info-group {
-  @include mixins.flex-center;
-  gap: $spacing-base;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 70%;
-}
-
 .contact__strong {
   font-size: $font-size-body-lg;
   font-weight: $regular;
   color: $color--white;
   margin-bottom: 0.5rem;
+}
+
+.contact__info-group {
+  @include mixins.flex-center;
+  gap: calc($spacing-large * 2);
+  flex-direction: row;
+  justify-content: space-between;
+  width: $width--lg;
 }
 
 .contact__info {
@@ -58,7 +58,7 @@
   background-color: $color--gray;
   padding: 1.5rem;
   max-width: 600px;
-  width: 75%;
+  width: $width--md;
 }
 
 .contact__form--title {
@@ -79,7 +79,7 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 100%;
+  width: $width--xl;
   height: auto;
 }
 
@@ -110,7 +110,7 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-small;
-  width: 100%;
+  width: $width--xl;
   margin-bottom: $spacing-base;
 }
 
@@ -131,4 +131,41 @@
   to {
     opacity: 1;
   }
+}
+
+// Footer section
+
+.footer {
+  @include mixins.flex-center;
+  flex-direction: column;
+  gap: $spacing-base;
+  padding: $spacing-xlarge 0;
+  margin-top: auto;
+  width: $width--sm;
+  text-align: center;
+}
+
+.footer__line {
+  @include mixins.border-radius;
+  @include mixins.bg-gradient($animation: true);
+  width: $width--lg;
+  height: 5px;
+}
+
+.footer__link {
+  color: $color--gray;
+  text-decoration: none;
+  font-size: $font-size-medium;
+  transition: color 200ms ease;
+
+  &:hover {
+    color: $color--white;
+  }
+}
+
+.footer__text,
+.footer__rights {
+  color: $color--gray;
+  font-size: $font-size-medium;
+  margin: 0;
 }

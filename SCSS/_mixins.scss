@@ -1,12 +1,18 @@
 @use "var" as *;
 
-/* Mixin Constructions */
+// ============================================
+// Reusable Mixins
+// ============================================
+
+/* Layout Mixins */
 
 @mixin flex-center($display: flex, $align: center, $justify: center) {
   display: $display;
   align-items: $align;
   justify-content: $justify;
 }
+
+/* Visual Effects */
 
 @mixin text-shadow($shadowX: 1px, $shadowY: 1px, $blur: 4px, $color: rgba(0, 0, 0, 0.7)) {
   text-shadow: $shadowX $shadowY $blur $color;
@@ -15,6 +21,8 @@
 @mixin box-shadow($shadowX: 0px, $shadowY: 8px, $blur: 16px, $color: rgba(0, 0, 0, 0.3)) {
   box-shadow: $shadowX $shadowY $blur $color;
 }
+
+/* Border Utilities */
 
 @mixin border--light($width: 1px, $style: solid, $color: $color--white) {
   border: $width $style $color;
@@ -28,6 +36,8 @@
   border-radius: $radius;
 }
 
+/* Gradient Background */
+
 @mixin bg-gradient(
   $from: $color--purple-medium,
   $mid: $color--purple-light,
@@ -38,11 +48,11 @@
   background: linear-gradient(to right, $from, $mid, $to);
   @if $animation {
     background-size: 150% 100%;
-    animation: btnGradient $animation-time ease-in-out infinite alternate;
+    animation: sharedGradient 5s ease-in-out infinite alternate;
   }
 }
 
-@keyframes btnGradient {
+@keyframes sharedGradient {
   0% {
     background-position: 0% 50%;
   }
@@ -50,6 +60,8 @@
     background-position: 100% 50%;
   }
 }
+
+/* Animation Utilities */
 
 @mixin transition($props: all, $dur: 500ms, $ease: ease) {
   transition: $props $dur $ease;
@@ -59,13 +71,15 @@
   animation: $name $dur $ease $iter $fill;
 }
 
+/* Responsive Utility */
+
 @mixin breakpoint($max) {
   @media (max-width: $max) {
     @content;
   }
 }
 
-/* Mixin buttons */
+/* Button Mixins */
 
 @mixin btn-size($pY, $pX, $font, $weight) {
   padding: $pY $pX;
@@ -75,7 +89,7 @@
 
 @mixin btn-base {
   @include btn-size($pY: $spacing-base, $pX: $spacing-xlarge, $font: $font-size-body, $weight: $bold);
-  @include border-radius(5rem);
+  @include border-radius($spacing-huge);
   @include transition;
   display: inline-flex;
   align-items: center;
@@ -103,7 +117,7 @@
   }
 }
 
-/* Mixin Modals */
+/* Modal Mixins */
 
 @mixin modal-content($max: 700px, $pad: 2rem, $display: flex) {
   @include bg-gradient($animation: false);
@@ -117,6 +131,8 @@
   box-sizing: border-box;
   display: $display;
   gap: 1rem;
+
+  /* Respect reduced motion preference */
   @media (prefers-reduced-motion: reduce) {
     animation: none !important;
   }
@@ -132,6 +148,7 @@
   font-weight: $bold;
   border: none;
   cursor: pointer;
+
   &:focus-visible {
     outline: 2px solid $color--purple-strong;
     outline-offset: 2px;

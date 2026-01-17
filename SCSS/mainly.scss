@@ -1,21 +1,28 @@
-@use "reset"; // Reset CSS
-@use "global"; // Global Styles
-@use "var" as *; // Variables (colors, fonts, spacing, etc)
-@use "mixins" as mixins; // Mixins
+// ============================================
+// Main SCSS Entry Point
+// ============================================
+
+// Base styles
+@use "reset";
+@use "global";
+@use "var" as *;
+@use "mixins" as mixins;
 
 // Components
 @use "compo/buttons";
 @use "compo/modals";
 
-// sections of the site
-@use "sections/header-section";
+// Scroll-snap architecture
+@use "snaps/snap-container";
+@use "snaps/snap-section";
+
+// Page sections
+@use "sections/nav-sidebar";
 @use "sections/hero-section";
 @use "sections/team-section";
-@use "sections/soluction-section";
-@use "sections/testemo-section";
+@use "sections/solution-section";
 @use "sections/contact-section";
-@use "sections/footer-section";
 
-// medias queries
-@use "medias/media-900px";
-@use "medias/media-405px";
+// Responsive breakpoints
+@use "medias/media-740px"; // Mobile (≤740px)
+@use "medias/media-741px-1100px"; // Tablet portrait & landscape

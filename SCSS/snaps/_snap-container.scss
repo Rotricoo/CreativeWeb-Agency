@@ -1,0 +1,25 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+// ============================================
+// Snap Container - Main Scroll Area
+// ============================================
+// Defines the scrollable container with vertical snap points.
+// Scroll is enabled only in this container (body has overflow hidden).
+
+.snap-container {
+  /* Snap behavior */
+  scroll-snap-type: y mandatory; // Force snapping to sections on Y-axis
+
+  /* Scrolling */
+  overflow-y: auto; // Enable vertical scroll
+  height: 100svh; // Full small viewport height (mobile safe)
+  scroll-behavior: smooth;
+  overscroll-behavior: contain; // Prevent scroll chaining/bouncing
+
+  /* Layout spacing */
+  margin: 0;
+  padding-left: calc(#{$sidebar-width} + #{$spacing-xxlarge}); // Sidebar + margin (160px + 3.5rem)
+  padding-right: $sidebar-width; // Right spacing (160px)
+  box-sizing: border-box;
+}

@@ -1,0 +1,141 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+.nav-sidebar {
+  background: $color--black;
+  padding: $spacing-large 0;
+  width: $sidebar-width;
+  height: 100svh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  --active-index: 0; // Custom property for active section indicator
+}
+
+/* Vertical line background */
+.nav-sidebar::before {
+  content: "";
+  background: $color--purple-medium;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  border-radius: 999px;
+  opacity: 0.9;
+}
+
+/* Animated active dot indicator */
+.nav-sidebar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, var(--active-offset, 0));
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: $color--purple-medium;
+  border: 2px solid $color--purple-light;
+  box-shadow: 0 0 0 6px $color--purple-light-40;
+  transition: transform 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: $zindex--sidebar-backdrop;
+}
+
+.nav-sidebar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  width: 100%;
+  position: relative;
+  z-index: $zindex--sidebar-list;
+}
+
+.nav-sidebar__item {
+  position: relative;
+  margin-left: calc(#{$sidebar-width} / 2 - 11px);
+}
+
+.nav-sidebar__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: $color--gray;
+  text-decoration: none;
+  font-size: $font-size-medium;
+  line-height: 1;
+}
+
+.nav-sidebar__link:hover .nav-sidebar__label {
+  color: $color--white;
+  font-weight: $bold;
+}
+
+.nav-sidebar__dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: $color--black;
+  border: 2px solid $color--purple-light;
+  box-sizing: border-box;
+  transition: border-color 200ms ease;
+  flex-shrink: 0;
+  position: relative;
+  z-index: $zindex--sidebar-list;
+}
+
+.nav-sidebar__link:hover .nav-sidebar__dot {
+  border-color: $color--purple-medium;
+}
+
+.nav-sidebar__label {
+  font-size: $font-size-medium;
+  color: $color--gray;
+  white-space: nowrap;
+  transition: color 200ms ease, font-size 200ms ease;
+}
+
+.nav-sidebar__link:hover .nav-sidebar__label {
+  color: $color--white;
+}
+
+/* Active page state */
+.nav-sidebar__link[aria-current="page"] .nav-sidebar__dot {
+  opacity: 0; // Hide dot, show animated indicator instead
+}
+
+.nav-sidebar__link[aria-current="page"] .nav-sidebar__label {
+  font-size: $font-size-body;
+  color: $color--white;
+  font-weight: $bold;
+  animation: labelSlide 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes labelSlide {
+  0% {
+    transform: translateX(-8px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Hide on mobile and tablets */
+@media (max-width: 900px) {
+  .nav-sidebar {
+    display: none;
+  }
+}

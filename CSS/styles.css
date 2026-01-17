@@ -1,35 +1,40 @@
-/* 0 personalizacoes proprias */
+@charset "UTF-8";
+/* ============================================
+Modern CSS Reset
+=============================================
+Based on Josh Comeau's CSS Reset with custom additions */
+/* Custom additions */
 a {
   text-decoration: none;
   text-decoration-line: none;
 }
 
-/* 1. Use a more-intuitive box-sizing model */
+/* Use intuitive box-sizing model */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* 2. Remove default margin */
+/* Remove default margin */
 * {
   margin: 0;
 }
 
-/* 3. Enable keyword animations */
+/* Enable smooth keyword animations */
 @media (prefers-reduced-motion: no-preference) {
   html {
     interpolate-size: allow-keywords;
   }
 }
 body {
-  /* 4. Add accessible line-height */
+  /* Accessible line-height */
   line-height: 1.5;
-  /* 5. Improve text rendering */
+  /* Improve text rendering */
   -webkit-font-smoothing: antialiased;
 }
 
-/* 6. Improve media defaults */
+/* Improve media defaults */
 img,
 picture,
 video,
@@ -39,7 +44,7 @@ svg {
   max-width: 100%;
 }
 
-/* 7. Inherit fonts for form controls */
+/* Inherit fonts for form controls */
 input,
 button,
 textarea,
@@ -47,7 +52,7 @@ select {
   font: inherit;
 }
 
-/* 8. Avoid text overflows */
+/* Avoid text overflows */
 p,
 h1,
 h2,
@@ -58,7 +63,7 @@ h6 {
   overflow-wrap: break-word;
 }
 
-/* 9. Improve line wrapping */
+/* Improve line wrapping */
 p {
   text-wrap: pretty;
 }
@@ -72,21 +77,26 @@ h6 {
   text-wrap: balance;
 }
 
-/*
-  10. Create a root stacking context
-*/
+/* Create root stacking context */
 #root,
 #__next {
   isolation: isolate;
 }
 
-/* Color Variables */
-/* Scale Spacing */
-/* Font Sizes */
+/* Color Palette */
+/* Spacing Scale */
+/* Typography Scale */
 /* Font Weights */
 /* Line Heights */
-/* Mixin Constructions */
-@keyframes btnGradient {
+/* Letter Spacing */
+/* Layout */
+/* Z-Index Scale */
+/* Width Scale */
+/* Layout Mixins */
+/* Visual Effects */
+/* Border Utilities */
+/* Gradient Background */
+@keyframes sharedGradient {
   0% {
     background-position: 0% 50%;
   }
@@ -94,34 +104,45 @@ h6 {
     background-position: 100% 50%;
   }
 }
-/* Mixin buttons */
-/* Mixin Modals */
+/* Animation Utilities */
+/* Responsive Utility */
+/* Button Mixins */
+/* Modal Mixins */
 html {
   scroll-behavior: smooth;
 }
 
 body {
+  /* Typography */
   color: #ffffff;
-  background-color: hsl(0, 0%, 0%);
+  line-height: 1.5;
   font-family: "Lato", sans-serif;
   font-style: normal;
-  line-height: 1.5;
-  margin: 2rem 5rem 0 5rem;
+  /* Layout - Fixed viewport to prevent double scroll */
+  background-color: hsl(0, 0%, 0%);
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  height: 100svh;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* User interaction */
   -webkit-user-select: none;
   user-select: none;
   -webkit-touch-callout: none;
 }
 
+/* Allow text selection in form elements */
 input,
 textarea,
 select,
-[contenteditable=true] {
+[contenteditable="true"] {
   -webkit-user-select: text;
   user-select: text;
 }
 
+/* Respect user's motion preferences */
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
@@ -129,6 +150,10 @@ select,
     animation-iteration-count: 1 !important;
   }
 }
+/* Buttons component
+   - .btn--sm: subtle button, light background
+   - .btn--lg: primary button, gradient background + hover scale
+*/
 .btn--sm {
   background: #ffffff;
   padding: 1rem 2rem;
@@ -145,7 +170,7 @@ select,
 .btn--sm:hover {
   background: linear-gradient(to right, rgb(131, 81, 242), rgb(159, 121, 242), rgb(190, 68, 241));
   background-size: 150% 100%;
-  animation: btnGradient 8s ease-in-out infinite alternate;
+  animation: sharedGradient 5s ease-in-out infinite alternate;
   color: white;
 }
 .btn--sm {
@@ -154,6 +179,8 @@ select,
 
 .btn--lg {
   background: linear-gradient(to right, rgb(131, 81, 242), rgb(159, 121, 242), rgb(190, 68, 241));
+  background-size: 150% 100%;
+  animation: sharedGradient 5s ease-in-out infinite alternate;
   padding: 1rem 2rem;
   font-size: 1.25rem;
   font-weight: 700;
@@ -174,12 +201,18 @@ select,
   color: #ffffff;
 }
 
+/* Focus-visible accessibility outline */
 .btn--sm:focus-visible,
 .btn--lg:focus-visible {
   outline: 2px solid rgb(56, 33, 89);
   outline-offset: 2px;
 }
 
+/* Modals component
+   - Dialogs are centered when open
+   - Backdrop has blur effect
+   - Content layout is controlled via mixins
+*/
 dialog {
   color: #ffffff;
   background: transparent;
@@ -187,6 +220,7 @@ dialog {
   padding: 0;
 }
 
+/* Base dialog states */
 dialog.modal__employee,
 dialog.modal__portfolio,
 dialog.modal__solutions {
@@ -198,6 +232,7 @@ dialog.modal__solutions {
   height: 100%;
 }
 
+/* Center content when open */
 dialog.modal__employee[open],
 dialog.modal__portfolio[open],
 dialog.modal__solutions[open] {
@@ -205,13 +240,16 @@ dialog.modal__solutions[open] {
   place-items: center;
 }
 
+/* Backdrop blur */
 dialog.modal__employee::backdrop,
 dialog.modal__portfolio::backdrop,
 dialog.modal__solutions::backdrop {
+  z-index: 40;
   -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
 }
 
+/* Content variants */
 .modal__employee--content {
   background: linear-gradient(to right, rgb(131, 81, 242), rgb(159, 121, 242), rgb(190, 68, 241));
   border-radius: 1.5rem;
@@ -224,6 +262,7 @@ dialog.modal__solutions::backdrop {
   box-sizing: border-box;
   display: grid;
   gap: 1rem;
+  /* Respect reduced motion preference */
 }
 @media (prefers-reduced-motion: reduce) {
   .modal__employee--content {
@@ -248,6 +287,7 @@ dialog.modal__solutions::backdrop {
   box-sizing: border-box;
   display: flex;
   gap: 1rem;
+  /* Respect reduced motion preference */
 }
 @media (prefers-reduced-motion: reduce) {
   .modal__solutions--content {
@@ -267,6 +307,7 @@ dialog.modal__solutions::backdrop {
   box-sizing: border-box;
   display: flex;
   gap: 1rem;
+  /* Respect reduced motion preference */
 }
 @media (prefers-reduced-motion: reduce) {
   .modal__portfolio--content {
@@ -279,6 +320,7 @@ dialog.modal__solutions::backdrop {
   text-align: center;
 }
 
+/* Employee modal - photo and close button */
 .modal__employee--photo {
   grid-row: 1/3;
   width: 170px;
@@ -307,6 +349,7 @@ dialog.modal__solutions::backdrop {
   outline-offset: 2px;
 }
 
+/* Solutions modal - text style */
 .modal__solutions--text {
   font-size: 1.5rem;
   font-weight: 700;
@@ -316,47 +359,171 @@ dialog.modal__solutions::backdrop {
   padding: 0 1rem;
 }
 
-.site-header {
+.snap-container {
+  /* Snap behavior */
+  scroll-snap-type: y mandatory;
+  /* Scrolling */
+  overflow-y: auto;
+  height: 100svh;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  /* Layout spacing */
+  margin: 0;
+  padding-left: calc(160px + 3.5rem);
+  padding-right: 160px;
+  box-sizing: border-box;
+}
+
+.snap-section {
+  /* Snap alignment */
+  scroll-snap-align: start;
+  /* Layout */
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Spacing */
+  padding: 2rem;
+}
+
+.nav-sidebar {
+  background: hsl(0, 0%, 0%);
+  padding: 1.5rem 0;
+  width: 160px;
+  height: 100svh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 1.5rem;
-  border: 1px solid rgb(131, 81, 242);
-  padding: 2rem;
-  justify-content: space-between;
+  --active-index: 0;
 }
 
-.site-header__toggle {
-  display: none;
+/* Vertical line background */
+.nav-sidebar::before {
+  content: "";
+  background: rgb(131, 81, 242);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  border-radius: 999px;
+  opacity: 0.9;
 }
 
-.site-header__nav {
+/* Animated active dot indicator */
+.nav-sidebar::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, var(--active-offset, 0));
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgb(131, 81, 242);
+  border: 2px solid rgb(159, 121, 242);
+  box-shadow: 0 0 0 6px rgba(159, 121, 242, 0.4);
+  transition: transform 700ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.nav-sidebar__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  height: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   gap: 3rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
 }
 
-.site-header__link {
+.nav-sidebar__item {
+  position: relative;
+  margin-left: calc(160px / 2 - 11px);
+}
+
+.nav-sidebar__link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #d0d0d0;
   text-decoration: none;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.nav-sidebar__link:hover .nav-sidebar__label {
   color: #ffffff;
-  font-size: 1.25rem;
   font-weight: 700;
 }
 
-.site-header__link:hover {
+.nav-sidebar__dot {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: hsl(0, 0%, 0%);
+  border: 2px solid rgb(159, 121, 242);
+  box-sizing: border-box;
+  transition: border-color 200ms ease;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-sidebar__link:hover .nav-sidebar__dot {
+  border-color: rgb(131, 81, 242);
+}
+
+.nav-sidebar__label {
+  font-size: 1rem;
   color: #d0d0d0;
+  white-space: nowrap;
+  transition: color 200ms ease, font-size 200ms ease;
 }
 
-.site-header__logo {
-  max-width: 9rem;
-  width: 100%;
-  height: auto;
+.nav-sidebar__link:hover .nav-sidebar__label {
+  color: #ffffff;
 }
 
-.btn--contact--mobile {
-  display: none;
-  max-width: 10rem;
+/* Active page state */
+.nav-sidebar__link[aria-current="page"] .nav-sidebar__dot {
+  opacity: 0;
 }
 
+.nav-sidebar__link[aria-current="page"] .nav-sidebar__label {
+  font-size: 1.25rem;
+  color: #ffffff;
+  font-weight: 700;
+  animation: labelSlide 400ms cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes labelSlide {
+  0% {
+    transform: translateX(-8px);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* Hide on mobile and tablets */
+@media (max-width: 900px) {
+  .nav-sidebar {
+    display: none;
+  }
+}
 .hero {
   padding: 5rem 2rem;
   margin: 5rem 0;
@@ -371,7 +538,7 @@ dialog.modal__solutions::backdrop {
 }
 
 .hero__title {
-  font-size: 3rem;
+  font-size: 3.5rem;
   line-height: 1.2;
   letter-spacing: 0.5rem;
   margin-bottom: 1rem;
@@ -432,6 +599,7 @@ dialog.modal__solutions::backdrop {
   filter: grayscale(0) contrast(100%) brightness(100%);
 }
 
+/* Grid size modifiers */
 .team__card-small {
   grid-column: span 1;
 }
@@ -444,6 +612,7 @@ dialog.modal__solutions::backdrop {
   grid-column: span 3;
 }
 
+/* Text overlays */
 .team__name,
 .team__role,
 .team__name-project,
@@ -506,7 +675,7 @@ dialog.modal__solutions::backdrop {
 .team__btn:hover:hover {
   background: linear-gradient(to right, rgb(131, 81, 242), rgb(159, 121, 242), rgb(190, 68, 241));
   background-size: 150% 100%;
-  animation: btnGradient 8s ease-in-out infinite alternate;
+  animation: sharedGradient 5s ease-in-out infinite alternate;
   color: white;
 }
 
@@ -560,7 +729,7 @@ dialog.modal__solutions::backdrop {
   border-radius: 1.5rem;
   background: linear-gradient(to right, rgb(131, 81, 242), rgb(159, 121, 242), rgb(190, 68, 241));
   background-size: 150% 100%;
-  animation: btnGradient 8s ease-in-out infinite alternate;
+  animation: sharedGradient 5s ease-in-out infinite alternate;
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
   display: flex;
   align-items: center;
@@ -594,7 +763,7 @@ dialog.modal__solutions::backdrop {
   border-radius: 1.5rem;
   background: linear-gradient(to right, rgb(131, 81, 242), rgb(159, 121, 242), rgb(190, 68, 241));
   background-size: 150% 100%;
-  animation: btnGradient 3s ease-in-out infinite alternate;
+  animation: sharedGradient 5s ease-in-out infinite alternate;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -662,6 +831,7 @@ dialog.modal__solutions::backdrop {
   position: relative;
 }
 
+/* Custom bullet points */
 .solutions__details--list li::before {
   content: "";
   border-radius: 0.2rem;
@@ -695,7 +865,7 @@ dialog.modal__solutions::backdrop {
 .solutions__bt:hover:hover {
   background: linear-gradient(to right, rgb(131, 81, 242), rgb(159, 121, 242), rgb(190, 68, 241));
   background-size: 150% 100%;
-  animation: btnGradient 8s ease-in-out infinite alternate;
+  animation: sharedGradient 5s ease-in-out infinite alternate;
   color: white;
 }
 .solutions__bt:hover {
@@ -704,6 +874,7 @@ dialog.modal__solutions::backdrop {
   transform: translateY(-1px);
 }
 
+/* Accessibility helper */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -716,14 +887,15 @@ dialog.modal__solutions::backdrop {
   border: 0;
 }
 
-.testimonials {
+.solutions__testimonials {
   overflow: hidden;
   position: relative;
   display: block;
   padding: 1rem 2rem;
+  margin-top: 1rem;
 }
 
-.testimonials__track {
+.solutions__testimonials--track {
   display: flex;
   gap: 1.5rem;
   transition: transform 200ms ease-in-out;
@@ -731,11 +903,11 @@ dialog.modal__solutions::backdrop {
   box-sizing: border-box;
 }
 
-.testimonials__div {
+.solutions__testimonials--div {
   border-radius: 1.5rem;
   background: linear-gradient(to right, rgb(131, 81, 242), rgb(159, 121, 242), rgb(190, 68, 241));
   background-size: 150% 100%;
-  animation: btnGradient 8s ease-in-out infinite alternate;
+  animation: sharedGradient 5s ease-in-out infinite alternate;
   padding: 2rem 1.5rem;
   gap: 1rem;
   box-sizing: border-box;
@@ -746,7 +918,7 @@ dialog.modal__solutions::backdrop {
   min-width: 0;
 }
 
-.testimonials__img {
+.solutions__testimonials--img {
   border-radius: 1rem;
   width: 100px;
   height: 100px;
@@ -755,23 +927,23 @@ dialog.modal__solutions::backdrop {
   flex: none;
 }
 
-.testimonials__infos {
+.solutions__testimonials--infos {
   flex: 1 1 0;
   min-width: 0;
   margin-left: 1rem;
 }
 
-.testimonials__name {
+.solutions__testimonials--name {
   font-size: 1.25rem;
   font-weight: 400;
   margin-bottom: 0.5rem;
 }
 
-.testimonials__name--strong {
+.solutions__testimonials--name--strong {
   font-weight: 700;
 }
 
-.testimonials__text {
+.solutions__testimonials--text {
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.8;
@@ -783,7 +955,7 @@ dialog.modal__solutions::backdrop {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  padding: 5rem 2rem;
+  padding: 10rem 2rem 0 2rem;
 }
 
 .contact__title {
@@ -799,21 +971,21 @@ dialog.modal__solutions::backdrop {
   margin-bottom: 3rem;
 }
 
-.contact__info-group {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 70%;
-}
-
 .contact__strong {
   font-size: 1.5rem;
   font-weight: 400;
   color: #ffffff;
   margin-bottom: 0.5rem;
+}
+
+.contact__info-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 90%;
 }
 
 .contact__info {
@@ -915,60 +1087,59 @@ dialog.modal__solutions::backdrop {
   }
 }
 .footer {
-  text-align: center;
-  padding: 2rem;
-  margin-top: 5rem;
-  border-top: 1px solid rgb(131, 81, 242);
-}
-
-.footer__nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
-  margin-bottom: 1.3rem;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem 0;
+  margin-top: auto;
+  width: 50%;
+  text-align: center;
+}
+
+.footer__line {
+  border-radius: 1rem;
+  background: linear-gradient(to right, rgb(131, 81, 242), rgb(159, 121, 242), rgb(190, 68, 241));
+  background-size: 150% 100%;
+  animation: sharedGradient 5s ease-in-out infinite alternate;
+  width: 90%;
+  height: 5px;
 }
 
 .footer__link {
+  color: #d0d0d0;
   text-decoration: none;
-  color: #ffffff;
   font-size: 1rem;
-  font-weight: 700;
+  transition: color 200ms ease;
 }
-
 .footer__link:hover {
-  color: #d0d0d0;
+  color: #ffffff;
 }
 
-.footer__text {
-  font-size: 0.8rem;
-  color: #d0d0d0;
-  margin-bottom: 0.5rem;
-}
-
+.footer__text,
 .footer__rights {
-  font-size: 0.8rem;
   color: #d0d0d0;
+  font-size: 1rem;
   margin: 0;
 }
 
-@media (max-width: 900px) {
-  /* ========================================
-     CSS Variables Override
-     ======================================== */
+/* ========================================
+   Mobile: ≤740px
+   - Sidebar hidden
+   - Compact spacing
+   - Testimonials hidden
+   ======================================== */
+@media (max-width: 740px) {
+  /* CSS Variables: mobile typography + spacing */
   :root {
-    --font-size-h1: 2.25rem; /* 36px */
-    --font-size-h2: 1.625rem; /* 26px */
-    --font-size-h3: 1.125rem; /* 18px */
-    --font-size-xbody: 1.1rem; /* 17.5px */
+    --font-size-h1: 2rem; /* 32px */
+    --font-size-h2: 1.5rem; /* 24px */
+    --font-size-h3: 1.25rem; /* 20px */
     --font-size-body: 1rem; /* 16px */
-    --font-size-small: 0.875rem; /* 14px */
-    --font-size-xsmall: 0.75rem; /* 12px */
-    --font-size-xxsmall: 0.65rem; /* 10px */
+    --spacing-mobile-lateral: 1rem; /* 16px */
   }
-  /* ========================================
-     Global Styles
-     ======================================== */
+  /* Global */
   body {
     margin: 0;
     padding: 0;
@@ -978,123 +1149,69 @@ dialog.modal__solutions::backdrop {
   }
   .btn--sm {
     padding: 0.4rem 1.5rem;
-    font-size: var(--font-size-small);
+    font-size: 0.8rem;
   }
   .btn--lg {
     padding: 0.8rem 2rem;
-    font-size: var(--font-size-xbody);
+    font-size: 1rem;
   }
-  /* ========================================
-     Header & Navigation
-     ======================================== */
-  .site-header {
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    padding: 0.5rem;
-    margin: 1rem;
-    border-radius: 1.5rem;
-    border: 1px solid var(--purple-medium);
-    transition: border-radius 0.3s ease;
-  }
-  .site-header__logo {
+  .nav-sidebar {
     display: none;
   }
-  .btn.btn--sm.btn--secondary {
-    display: none;
+  .snap-container {
+    height: 100svh; /* Small viewport height for iOS */
+    padding: 0; /* Sections handle their own padding */
   }
-  .btn--contact--mobile {
-    display: block;
-  }
-  .site-header__toggle {
-    display: inline-block;
-    margin: 0 auto;
-    align-items: center;
-    padding: 1rem;
-    background: transparent;
-    color: white;
-    font-weight: var(--bold-font);
-    border-radius: 1rem;
-    border: none;
-  }
-  .site-header__nav {
-    position: absolute;
-    top: calc(100% - 1px);
-    left: -1px;
-    right: -1px;
-    flex-direction: column;
-    gap: 1.5rem;
-    max-height: 0;
-    overflow: hidden;
-    pointer-events: none;
-    background: none;
-    border: none;
-    padding: 0;
-    border-radius: 0;
-    transition: max-height 0.4s ease;
-  }
-  .site-header__link {
-    font-size: var(--font-size-small);
-  }
-  .site-header--open {
-    border-bottom: none;
-    border-radius: 1.5rem 1.5rem 0 0;
-  }
-  .site-header--open .site-header__nav {
-    max-height: 300px;
-    pointer-events: auto;
-    background: linear-gradient(to bottom, black, var(--purple-strong));
-    border: 1px solid var(--purple-medium);
-    border-top: none;
-    padding: 1rem 2rem;
-    border-radius: 0 0 1.5rem 1.5rem;
+  .snap-section {
+    padding: 2rem 1.5rem;
   }
   /* ========================================
-     Hero Banner Section
+     hero Section
      ======================================== */
   .hero {
-    padding: 3rem 1rem;
-    margin: 3rem 0;
+    padding: 1rem;
+    margin: 0;
+    text-align: center;
   }
   .hero__logo--mobile {
     display: block;
-    margin: 0 auto 2rem auto;
     width: 5rem;
     height: auto;
+    margin-bottom: 1.5rem;
   }
   .hero__title {
+    max-width: 90%;
     font-size: var(--font-size-h1);
+    line-height: 1.2;
   }
   .hero__text {
-    font-size: var(--font-size-xbody);
+    font-size: 1.25rem;
     max-width: 90%;
     margin-bottom: 3rem;
   }
   .hero__cta {
-    padding: 0.8rem 1.5rem;
-    font-size: var(--font-size-small);
+    padding: 1rem 1.5rem;
   }
   /* ========================================
-     Behind the Brand Section
+     Team section
      ======================================== */
   .team {
-    padding: 3rem 1rem;
+    padding: 2rem 1.5rem;
   }
   .team__title {
     font-size: var(--font-size-h2);
+    text-align: center;
   }
   .team__text {
-    font-size: var(--font-size-body);
-    max-width: 85%;
+    font-size: 1.25rem;
+    max-width: 100%;
     text-wrap: balance;
     margin-bottom: 1rem;
   }
-  /* Cards Grid */
   .team__grid {
     margin: 0 3rem;
     grid-template-columns: repeat(6, 1fr);
-    gap: 0.5rem;
+    gap: 1rem;
   }
   .team__card {
     position: relative;
@@ -1102,11 +1219,11 @@ dialog.modal__solutions::backdrop {
     overflow: visible;
   }
   .team__card--img {
+    border-radius: 1rem;
     width: 100%;
     height: 150px;
     object-fit: cover;
     display: block;
-    border-radius: 1rem;
     filter: grayscale(1);
     transition: none;
   }
@@ -1124,181 +1241,164 @@ dialog.modal__solutions::backdrop {
     grid-column: span 3;
     height: 150px;
   }
+  /* Hide text overlays on small screens */
   .team__name,
   .team__role,
-  .team__name-project,
-  .team__brand,
   .team__name-project,
   .team__brand {
     display: none;
   }
-  /* Card Text Elements */
-  .team__name,
-  .team__role,
-  .team__name-project,
-  .team__brand {
-    position: static;
-    left: auto;
-    bottom: auto;
-    margin: 0;
-    padding: 0;
-    text-shadow: none;
-    color: white;
-  }
-  .team__btn,
-  .team__btn,
+  /* Center mini action button */
   .team__btn {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: #ffffff;
+    color: rgb(131, 81, 242);
+    font-weight: 700;
     position: absolute;
     top: 85%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 2rem;
-    height: 2rem;
     padding: 0;
-    border-radius: 50%;
-    background: white;
-    color: var(--purple-medium);
-    font-weight: var(--bold-font);
-    display: flex;
-    justify-content: center;
     align-items: center;
     right: auto;
     bottom: auto;
+  }
+  .team__cta--btn {
+    margin-top: 1rem;
   }
   /* ========================================
      Solutions Section
      ======================================== */
   .solutions {
-    padding: 3rem 0 5rem 0;
+    padding: 1.5rem 0;
   }
   .solutions__title {
     font-size: var(--font-size-h2);
   }
   .solutions__text {
-    font-size: var(--font-size-body);
-    max-width: 90%;
-    margin-bottom: 2rem;
+    font-size: 1.25rem;
+    max-width: 100%;
+    text-wrap: balance;
+    margin-bottom: 1rem;
   }
   .solutions__cards {
     flex-direction: column;
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
+    gap: 1rem;
+  }
+  .solutions__card {
+    padding: 0.7rem;
   }
   .solutions__carousel {
     margin: 0 1rem;
   }
   .solutions__details {
     order: 2;
-    padding: 2rem;
+    padding: 1.5rem 1rem 1rem 1rem;
     margin: 0 1rem;
-  }
-  /* ========================================
-     Testimonials Section
-     ======================================== */
-}
-@media (max-width: 900px) and (max-width: 900px) {
-  .testimonials {
-    width: 60%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    margin: 0 auto;
-  }
-  .testimonials__track {
     gap: 1rem;
   }
-  .testimonials__div {
-    border: 0.1rem solid #ffffff;
-    padding: 1rem;
-    flex: 0 0 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    flex-direction: row;
-    align-items: center;
-    box-sizing: border-box;
+  .solutions__details--title {
+    font-size: var(--font-size-h3);
   }
-  .testimonials__img {
-    width: 72px;
-    height: 72px;
-    margin-right: 0.5rem;
-    margin-bottom: 0;
+  .solutions__details--text {
+    font-size: var(--font-size-body);
   }
-  .testimonials__infos {
-    margin-left: 0;
+  .solutions__details--list {
+    font-size: var(--font-size-small);
+    padding-left: 0;
   }
-}
-@media (max-width: 900px) {
+  .solutions__bt {
+    margin-top: 0;
+  }
+  .solutions__testimonials {
+    display: none;
+  }
   /* ========================================
      Contact Section
      ======================================== */
   .contact {
-    padding: 3rem 1rem;
-    margin: 0 1rem;
+    padding: 0 1rem;
+    margin: 0;
   }
   .contact__title {
     font-size: var(--font-size-h2);
     margin-bottom: 0.5rem;
-    width: 110%;
   }
   .contact__text {
-    font-size: var(--font-size-body);
+    font-size: 1.25rem;
     max-width: 100%;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
-  .contact__div {
-    flex-direction: column;
+  .contact__info-group {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     width: 100%;
     gap: 1rem;
+  }
+  .contact__info {
+    margin-bottom: 1rem;
+  }
+  .contact__info:last-child {
+    margin-bottom: 0.5rem;
   }
   .contact__strong {
     font-size: var(--font-size-small);
   }
-  .form__div {
-    width: 90%;
+  .contact__form {
+    width: 100%;
+    padding: 1rem 1.5rem;
   }
-  .form__div--title {
-    font-size: var(--font-size-h3);
+  .contact__form--field {
+    margin-bottom: 0.5rem;
+    gap: 0;
   }
-  .form__div--text {
-    font-size: var(--font-size-small);
+  .contact__form--title {
+    font-size: var(--font-size-h2);
   }
-  /* ========================================
-     Footer
-     ======================================== */
-  .footer__nav {
-    gap: 1rem;
-    flex-direction: row;
+  .contact__form--text {
+    font-size: var(--font-size-body);
+    margin-bottom: 1rem;
   }
-  .footer__link {
-    font-size: var(--font-size-xxsmall);
-    white-space: nowrap;
+  .contact__form--textarea {
+    height: 80px;
+    min-height: 50px;
+  }
+  .footer {
+    width: 100%;
+    margin-top: 0;
+    padding: 1.5rem 0 0.5rem 0;
   }
   .footer__text {
-    font-size: var(--font-size-xsmall);
+    font-size: 1rem;
   }
   .footer__rights {
-    font-size: var(--font-size-xxsmall);
+    font-size: 0.8rem;
   }
-  /* ========================================
-      Modal Employee Section
-      ======================================== */
-  /* ========================================
-   Modal Employee Section
-   ======================================== */
+  /* Modals: compact layout for small screens */
   .modal__employee--content {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     text-align: center;
-    max-width: 60%;
+    max-width: 75%;
     gap: 1rem;
     padding: 1.5rem;
   }
   .modal__employee--photo {
+    border-radius: 1rem;
     width: 100%;
     max-width: 120px;
     height: 150px;
-    border-radius: 1rem;
     object-fit: cover;
     border: 1px solid white;
   }
@@ -1331,43 +1431,300 @@ dialog.modal__solutions::backdrop {
     font-size: var(--font-size-xsmall);
     padding-left: 1.5rem;
   }
-  /* ========================================
-     Modals
-     ======================================== */
   dialog.modal__employee,
   dialog.modal__portfolio,
   dialog.modal__solutions {
     inset: 0;
   }
-  /* Modal Employee */
   .modal__employee--close,
   .modal__portfolio--close,
   .modal__solutions--close {
     top: 1rem;
     right: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.25rem;
   }
-  /* Modal Servico */
   .modal__solutions--content {
-    width: 70%;
-    padding: 2rem;
+    width: 90%;
+    padding: 1.5rem;
     align-items: flex-start;
     text-align: left;
   }
   .modal__solutions--text {
+    font-size: 1.25rem;
     margin: 0;
     padding: 0 1.5rem;
     text-wrap: balance;
   }
-  /* Modal Portfolio */
   .modal__portfolio--content {
-    width: 70%;
+    width: 75%;
     padding: 2rem;
   }
 }
-@media (max-width: 405px) {
-  .testimonials__track {
-    min-height: 250px;
+/* ========================================
+   Tablet (Portrait): 741px–1100px
+   - Sidebar hidden
+   - Extra lateral padding via snap-container
+   - Testimonials hidden
+   ======================================== */
+@media (min-width: 741px) and (max-width: 1100px) and (orientation: portrait) {
+  :root {
+    /* Typography scale overrides */
+    --font-size-h1: 2.8rem; /* 44.8px */
+    --font-size-h2: 2.3rem; /* 36px */
+    --font-size-h3: 1.8rem; /* 29px */
+    --font-size-body: 1.5rem; /* 24px */
+    /* Spacing */
+    --spacing-tablet-lateral: 2rem; /* 32px */
+  }
+  .nav-sidebar {
+    display: none; /* Hide sidebar on tablet portrait */
+  }
+  .snap-container {
+    margin: 0;
+    padding: 0 120px; /* Lateral space for comfortable reading */
+  }
+  .solutions__testimonials {
+    display: none; /* Avoid crowded layout on tablet */
+  }
+  /* Remove extra section paddings (snap-section already handles spacing) */
+  .hero,
+  .team,
+  .solutions,
+  .contact {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .hero__title {
+    font-size: var(--font-size-h1);
+    max-width: 100%;
+  }
+  .hero__text {
+    font-size: var(--font-size-body);
+    max-width: 80%;
+    margin-bottom: 2rem;
+  }
+  /* ========================================
+     Team section
+     ======================================== */
+  .team {
+    padding: 0;
+  }
+  .team__title {
+    font-size: var(--font-size-h2);
+    text-align: center;
+  }
+  .team__text {
+    font-size: 1.25rem;
+    max-width: 100%;
+    text-wrap: balance;
+    margin-bottom: 1rem;
+  }
+  .team__grid {
+    margin: 0 3rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+  .team__card {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+  .team__card--img {
+    border-radius: 1rem;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(1);
+    transition: none;
+  }
+  /* Card Sizes */
+  .team__card-small {
+    grid-column: span 2;
+    height: 200px;
+  }
+  .team__card-large,
+  .team__card-extralarge {
+    grid-column: span 6;
+    height: 200px;
+  }
+  .team__card-small-last {
+    grid-column: span 3;
+    height: 200px;
+  }
+  /* Hide text overlays for compact cards */
+  .team__name,
+  .team__role,
+  .team__name-project,
+  .team__brand {
+    display: none;
+  }
+  /* Center mini action button on cards */
+  .team__btn {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background: #ffffff;
+    color: rgb(131, 81, 242);
+    font-weight: 700;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    align-items: center;
+    right: auto;
+    bottom: auto;
+  }
+  .team__cta--btn {
+    margin-top: 1rem;
+  }
+  /* ========================================
+     Solutions Section
+     ======================================== */
+  .solutions__title {
+    font-size: var(--font-size-h2);
+  }
+  .solutions__text {
+    font-size: 1.25rem;
+    max-width: 100%;
+    text-wrap: balance;
+    margin-bottom: 1rem;
+  }
+  .solutions__cards {
+    flex-direction: column;
+    width: 100%;
+    max-width: 550px;
+    gap: 1rem;
+  }
+  .solutions__card {
+    padding: 0.7rem;
+  }
+  .solutions__carousel {
+    margin: 0 1rem;
+  }
+  .solutions__details {
+    order: 2;
+    padding: 2rem;
+    margin: 0 1rem;
+    gap: 1rem;
+  }
+  .solutions__details--title {
+    font-size: var(--font-size-h3);
+  }
+  .solutions__details--text {
+    font-size: var(--font-size-body);
+  }
+  .solutions__details--list {
+    font-size: var(--font-size-small);
+    padding-left: 0;
+  }
+  .solutions__bt {
+    margin-top: 0;
+  }
+  .solutions__testimonials {
+    display: none;
+  }
+  /* ========================================
+     Contact Section
+     ======================================== */
+  .contact {
+    padding: 5rem 1rem 0 1rem;
+    margin: 0;
+  }
+  .contact__title {
+    font-size: var(--font-size-h2);
+    margin-bottom: 0.5rem;
+  }
+  .contact__text {
+    font-size: 1.25rem;
+    max-width: 100%;
+    margin-bottom: 1.5rem;
+  }
+  .contact__info-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+  .contact__info {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  .contact__info:last-child {
+    margin-bottom: 0.5rem;
+  }
+  .contact__strong {
+    font-size: var(--font-size-small);
+  }
+  .contact__form {
+    width: 100%;
+    padding: 1rem 2rem;
+  }
+  .contact__form--field {
+    margin-bottom: 0.5rem;
+    gap: 0;
+  }
+  .contact__form--title {
+    font-size: var(--font-size-h2);
+  }
+  .contact__form--text {
+    font-size: var(--font-size-body);
+    margin-bottom: 1rem;
+  }
+  .contact__form--textarea {
+    height: 120px;
+    min-height: 50px;
+  }
+  .footer {
+    width: 100%;
+    padding: 1rem;
+    margin: 5rem;
+  }
+  .footer__text {
+    font-size: 1rem;
+  }
+  .footer__rights {
+    font-size: 0.8rem;
+  }
+}
+/* ========================================
+   Tablet (Landscape): 1024px–1366px
+   - Sidebar visible
+   - Slight right padding for balance
+   - Testimonials hidden
+   ======================================== */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  .snap-container {
+    height: 100svh; /* Match visible viewport */
+    padding-right: 30px; /* Slight extra right spacing */
+  }
+  .solutions__details {
+    padding: 1.5rem;
+    overflow: visible;
+    max-height: none;
+  }
+  .solutions__testimonials {
+    display: none;
+  }
+  .contact {
+    padding: 3rem 0 0 0;
+  }
+  .footer {
+    width: 90%;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  .footer__text {
+    font-size: 0.8rem;
+  }
+  .footer__rights {
+    font-size: 0.8rem;
   }
 }
 

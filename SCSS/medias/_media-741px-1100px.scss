@@ -1,0 +1,322 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+/* ========================================
+   Tablet (Portrait): 741px–1100px
+   - Sidebar hidden
+   - Extra lateral padding via snap-container
+   - Testimonials hidden
+   ======================================== */
+@media (min-width: 741px) and (max-width: 1100px) and (orientation: portrait) {
+  :root {
+    /* Typography scale overrides */
+    --font-size-h1: 2.8rem; /* 44.8px */
+    --font-size-h2: 2.3rem; /* 36px */
+    --font-size-h3: 1.8rem; /* 29px */
+    --font-size-body: 1.5rem; /* 24px */
+
+    /* Spacing */
+    --spacing-tablet-lateral: 2rem; /* 32px */
+  }
+
+  .nav-sidebar {
+    display: none; /* Hide sidebar on tablet portrait */
+  }
+
+  .snap-container {
+    margin: 0;
+    padding: 0 120px; /* Lateral space for comfortable reading */
+  }
+
+  .solutions__testimonials {
+    display: none; /* Avoid crowded layout on tablet */
+  }
+
+  /* Remove extra section paddings (snap-section already handles spacing) */
+  .hero,
+  .team,
+  .solutions,
+  .contact {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  // hero section
+  .hero__title {
+    font-size: var(--font-size-h1);
+    max-width: 100%;
+  }
+
+  .hero__text {
+    font-size: var(--font-size-body);
+    max-width: 80%;
+    margin-bottom: 2rem;
+  }
+
+  // team
+  /* ========================================
+     Team section
+     ======================================== */
+
+  .team {
+    padding: 0;
+  }
+
+  .team__title {
+    font-size: var(--font-size-h2);
+    text-align: center;
+  }
+
+  .team__text {
+    font-size: $font-size-body;
+    max-width: $width--xl;
+    text-wrap: balance;
+    margin-bottom: 1rem;
+  }
+
+  .team__grid {
+    margin: 0 3rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: $spacing-base;
+  }
+
+  .team__card {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .team__card--img {
+    @include mixins.border-radius;
+    width: $width--xl;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(1);
+    transition: none;
+  }
+
+  /* Card Sizes */
+
+  .team__card-small {
+    grid-column: span 2;
+    height: 200px;
+  }
+  .team__card-large,
+  .team__card-extralarge {
+    grid-column: span 6;
+    height: 200px;
+  }
+
+  .team__card-small-last {
+    grid-column: span 3;
+    height: 200px;
+  }
+
+  /* Hide text overlays for compact cards */
+  .team__name,
+  .team__role,
+  .team__name-project,
+  .team__brand {
+    display: none;
+  }
+
+  /* Center mini action button on cards */
+  .team__btn {
+    @include mixins.border-radius(50%);
+    @include mixins.flex-center;
+    width: $width--3;
+    height: $width--3;
+    background: $color--white;
+    color: $color--purple-medium;
+    font-weight: $bold;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    align-items: center;
+    right: auto;
+    bottom: auto;
+  }
+
+  .team__cta--btn {
+    margin-top: $spacing-base;
+  }
+
+  /* ========================================
+     Solutions Section
+     ======================================== */
+  .solutions__title {
+    font-size: var(--font-size-h2);
+  }
+
+  .solutions__text {
+    font-size: $font-size-body;
+    max-width: $width--xl;
+    text-wrap: balance;
+    margin-bottom: 1rem;
+  }
+
+  .solutions__cards {
+    flex-direction: column;
+    width: $width--xl;
+    max-width: 550px;
+    gap: $spacing-base;
+  }
+
+  .solutions__card {
+    padding: 0.7rem;
+  }
+
+  .solutions__carousel {
+    margin: 0 $spacing-base;
+  }
+
+  .solutions__details {
+    order: 2;
+    padding: $spacing-xlarge;
+    margin: 0 $spacing-base;
+    gap: $spacing-base;
+  }
+
+  .solutions__details--title {
+    font-size: var(--font-size-h3);
+  }
+
+  .solutions__details--text {
+    font-size: var(--font-size-body);
+  }
+
+  .solutions__details--list {
+    font-size: var(--font-size-small);
+    padding-left: 0;
+  }
+
+  .solutions__bt {
+    margin-top: 0;
+  }
+
+  .solutions__testimonials {
+    display: none;
+  }
+
+  // Contact Section
+
+  /* ========================================
+     Contact Section
+     ======================================== */
+  .contact {
+    padding: 5rem 1rem 0 1rem;
+    margin: 0;
+  }
+
+  .contact__title {
+    font-size: var(--font-size-h2);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact__text {
+    font-size: $font-size-body;
+    max-width: $width--xl;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact__info-group {
+    @include mixins.flex-center;
+    flex-direction: column;
+    width: $width--xl;
+    gap: 1rem;
+  }
+
+  .contact__info {
+    margin-bottom: $spacing-large;
+    text-align: center;
+  }
+
+  .contact__info:last-child {
+    margin-bottom: $spacing-small;
+  }
+
+  .contact__strong {
+    font-size: var(--font-size-small);
+  }
+
+  .contact__form {
+    width: $width--xl;
+    padding: $spacing-base $spacing-xlarge;
+  }
+
+  .contact__form--field {
+    margin-bottom: 0.5rem;
+    gap: 0;
+  }
+
+  .contact__form--title {
+    font-size: var(--font-size-h2);
+  }
+
+  .contact__form--text {
+    font-size: var(--font-size-body);
+    margin-bottom: $spacing-base;
+  }
+
+  .contact__form--textarea {
+    height: 120px;
+    min-height: 50px;
+  }
+
+  .footer {
+    width: $width--xl;
+    padding: $spacing-base;
+    margin: 5rem;
+  }
+
+  .footer__text {
+    font-size: $font-size-medium;
+  }
+
+  .footer__rights {
+    font-size: $font-size-small;
+  }
+}
+
+/* ========================================
+   Tablet (Landscape): 1024px–1366px
+   - Sidebar visible
+   - Slight right padding for balance
+   - Testimonials hidden
+   ======================================== */
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+  .snap-container {
+    height: 100svh; /* Match visible viewport */
+    padding-right: 30px; /* Slight extra right spacing */
+  }
+
+  .solutions__details {
+    padding: $spacing-large;
+    overflow: visible;
+    max-height: none;
+  }
+
+  .solutions__testimonials {
+    display: none;
+  }
+
+  .contact {
+    padding: 3rem 0 0 0;
+  }
+  .footer {
+    width: $width--lg;
+    padding: $spacing-base;
+    margin-top: 2rem;
+  }
+
+  .footer__text {
+    font-size: $font-size-small;
+  }
+
+  .footer__rights {
+    font-size: $font-size-small;
+  }
+}

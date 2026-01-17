@@ -1,6 +1,14 @@
+/**
+ * Team Section Controller
+ * Manages two modal dialogs:
+ * 1. Employee Modal - Shows detailed team member information
+ * 2. Portfolio Modal - Displays portfolio preview (triggered from team section)
+ * Includes focus management for accessibility compliance
+ */
 (function () {
   "use strict";
 
+  // Team members data array - defines all team profiles
   const teamMembers = [
     {
       id: "matheus",
@@ -42,7 +50,7 @@
       id: "paulo",
       name: "Paulo S.",
       role: "Public Relations Lead",
-      bio: "Paulo is our communication specialist, building and protecting our clients’ reputations and managing key relationships.",
+      bio: "Paulo is our communication specialist, building and protecting our clients' reputations and managing key relationships.",
       photo: "Assets/Paulo.jpg",
       bullets: [
         "Reputation and communication management across channels.",
@@ -65,21 +73,43 @@
   ];
 
   document.addEventListener("DOMContentLoaded", () => {
-    // helper foco seguro
-    let lastFocusedElement = null;
+    /* ========================================
+       Focus Management Helpers
+       - Ensures keyboard accessibility
+       - Returns focus to trigger button after modal closes
+       ======================================== */
+
+    let lastFocusedElement = null; // Store last focused element for return focus
+
+    /**
+     * Check if element is focusable and safe to receive focus
+     * Excludes body, main, and documentElement to prevent unwanted behavior
+     * @param {HTMLElement} el - Element to check
+     * @returns {boolean} - True if element can safely receive focus
+     */
     function isFocusable(el) {
       if (!el || typeof el.focus !== "function") return false;
       const tag = el.tagName ? el.tagName.toLowerCase() : "";
       if (tag === "main" || el === document.body || el === document.documentElement) return false;
       return true;
     }
+
+    /**
+     * Safely focus element with error handling
+     * @param {HTMLElement} el - Element to focus
+     */
     function safeFocus(el) {
       try {
         if (isFocusable(el)) el.focus();
       } catch {}
     }
 
-    // Employee modal
+    /* ========================================
+       Employee Modal
+       - Shows team member details
+       - Populated from teamMembers data array
+       ======================================== */
+
     const teamButtons = document.querySelectorAll(".team__btn");
     const employeeModal = document.getElementById("modalEmployee");
     const employeePhoto = document.querySelector(".modal__employee--photo");
@@ -89,14 +119,18 @@
     const employeeList = document.querySelector(".modal__employee--list");
     const employeeCloseBtn = document.querySelector(".modal__employee--close");
 
+    // Attach click handlers to all team member buttons
     if (teamButtons.length && employeeModal) {
       teamButtons.forEach((button) => {
         button.addEventListener("click", () => {
-          lastFocusedElement = button;
+          lastFocusedElement = button; // Store for return focus
+
+          // Find team member data by ID from data-member attribute
           const memberId = button.getAttribute("data-member");
           const member = teamMembers.find((p) => p.id === memberId);
           if (!member) return;
 
+          // Update modal content with member data
           if (employeePhoto) {
             employeePhoto.src = member.photo;
             employeePhoto.alt = member.name;
@@ -105,6 +139,7 @@
           if (employeeRole) employeeRole.textContent = member.role;
           if (employeeBio) employeeBio.textContent = member.bio;
 
+          // Rebuild bullet list
           if (employeeList) {
             employeeList.innerHTML = "";
             member.bullets.forEach((item) => {
@@ -114,69 +149,105 @@
             });
           }
 
+          // Open modal using native dialog API or fallback
           if (typeof employeeModal.showModal === "function") {
             employeeModal.showModal();
           } else {
             employeeModal.setAttribute("open", "");
           }
 
+          // Focus close button for keyboard accessibility
           setTimeout(() => safeFocus(employeeCloseBtn || employeeModal), 0);
         });
       });
     }
 
+    /**
+     * Close employee modal and restore focus to trigger button
+     */
     function closeEmployeeModal() {
       if (!employeeModal) return;
+
+      // Close using native dialog API or fallback
       try {
         if (employeeModal.open) employeeModal.close();
       } catch {
         employeeModal.removeAttribute("open");
       }
+
+      // Return focus to button that opened the modal
       setTimeout(() => {
         safeFocus(lastFocusedElement);
         lastFocusedElement = null;
       }, 0);
     }
 
+    // Close button click handler
     employeeCloseBtn?.addEventListener("click", closeEmployeeModal);
+
+    // Backdrop click handler (close when clicking outside modal content)
     employeeModal?.addEventListener("click", (e) => {
       if (e.target === employeeModal) closeEmployeeModal();
     });
+
+    // ESC key handler (prevent default and use custom close logic)
     employeeModal?.addEventListener("cancel", (e) => {
       e.preventDefault();
       closeEmployeeModal();
     });
 
-    // Portfolio modal (button is in team section)
+    /* ========================================
+       Portfolio Modal
+       - Triggered by CTA button in team section
+       - Generic modal without dynamic content
+       ======================================== */
+
     const portfolioButton = document.querySelector(".team__cta--btn");
     const portfolioModal = document.getElementById("modalPortfolio");
     const portfolioCloseBtn = portfolioModal?.querySelector(".modal__portfolio--close");
 
+    // Open portfolio modal on button click
     portfolioButton?.addEventListener("click", () => {
-      lastFocusedElement = portfolioButton;
+      lastFocusedElement = portfolioButton; // Store for return focus
       if (!portfolioModal) return;
+
+      // Open modal using native dialog API or fallback
       if (typeof portfolioModal.showModal === "function") portfolioModal.showModal();
       else portfolioModal.setAttribute("open", "");
+
+      // Focus close button for keyboard accessibility
       setTimeout(() => safeFocus(portfolioCloseBtn || portfolioModal), 0);
     });
 
+    /**
+     * Close portfolio modal and restore focus to trigger button
+     */
     function closePortfolioModal() {
       if (!portfolioModal) return;
+
+      // Close using native dialog API or fallback
       try {
         if (portfolioModal.open) portfolioModal.close();
       } catch {
         portfolioModal.removeAttribute("open");
       }
+
+      // Return focus to button that opened the modal
       setTimeout(() => {
         safeFocus(lastFocusedElement);
         lastFocusedElement = null;
       }, 0);
     }
 
+    // Close button click handler
     portfolioCloseBtn?.addEventListener("click", closePortfolioModal);
+
+    // Backdrop click handler (close when clicking outside modal content)
     portfolioModal?.addEventListener("click", (e) => {
       if (e.target === portfolioModal) closePortfolioModal();
     });
+
+    // ESC key handler (prevent default and use custom close logic)
     portfolioModal?.addEventListener("cancel", (e) => {
       e.preventDefault();
       closePortfolioModal();

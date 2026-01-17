@@ -1,0 +1,23 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+// ============================================
+// Snap Section - Individual Scroll Targets
+// ============================================
+// Each section occupies full viewport height and snaps to the
+// start when scrolled into view.
+
+.snap-section {
+  /* Snap alignment */
+  scroll-snap-align: start; // Snap to top of section (alternatives: center, end)
+
+  /* Layout */
+  min-height: 100svh; // Full viewport height minimum
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  /* Spacing */
+  padding: $spacing-xlarge; // Internal content spacing
+}

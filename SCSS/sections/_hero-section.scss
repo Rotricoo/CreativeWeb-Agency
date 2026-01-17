@@ -2,8 +2,8 @@
 @use "../mixins" as mixins;
 
 .hero {
-  padding: calc($spacing-base * 5) $spacing-xlarge; // 5rem 2rem
-  margin: calc($spacing-base * 5) 0;
+  padding: $spacing-huge $spacing-xlarge;
+  margin: $spacing-huge 0;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
@@ -11,7 +11,7 @@
 }
 
 .hero__logo--mobile {
-  display: none;
+  display: none; // Hidden by default, visible only on mobile
 }
 
 .hero__title {

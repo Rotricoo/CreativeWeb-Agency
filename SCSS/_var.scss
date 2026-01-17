@@ -1,4 +1,8 @@
-/* Color Variables */
+// ============================================
+// Design Tokens & Variables
+// ============================================
+
+/* Color Palette */
 $color--white: #ffffff;
 $color--gray: #d0d0d0;
 $color--black: hsl(0, 0%, 0%);
@@ -7,23 +11,23 @@ $color--purple-medium: rgb(131, 81, 242);
 $color--purple-light: rgb(159, 121, 242);
 $color--purple-light-40: rgba(159, 121, 242, 0.4);
 $color--pink: rgb(190, 68, 241);
-$color--gooey-color: rgb(131, 81, 242);
-$color--cursor-color: $color--gooey-color;
 
-/* Scale Spacing */
-$spacing-small: 0.5rem;
-$spacing-base: 1rem;
-$spacing-large: 1.5rem;
-$spacing-xlarge: 2rem;
+/* Spacing Scale */
+$spacing-small: 0.5rem; // 8px
+$spacing-base: 1rem; // 16px
+$spacing-large: 1.5rem; // 24px
+$spacing-xlarge: 2rem; // 32px
+$spacing-xxlarge: 3.5rem; // 56px
+$spacing-huge: 5rem; // 80px
 
-/* Font Sizes */
-$font-size-small: 0.8rem; // 12.8
+/* Typography Scale */
+$font-size-small: 0.8rem; // 12.8px
 $font-size-medium: 1rem; // 16px
 $font-size-body: 1.25rem; // 20px
 $font-size-body-lg: 1.5rem; // 24px
 $font-size-h3: 2rem; // 32px
 $font-size-h2: 2.25rem; // 36px
-$font-size-h1: 3rem; // 48px
+$font-size-h1: 3.5rem; // 56px
 
 /* Font Weights */
 $bold: 700;
@@ -35,7 +39,29 @@ $height-tight: 1.2;
 $height-regular: 1.5;
 $height-loose: 1.8;
 
-// Letter Spacing
+/* Letter Spacing */
 $letter-spacing-tight: 0.1rem;
 $letter-spacing-small: 0.5rem;
 $letter-spacing-loose: 1rem;
+
+/* Layout */
+$sidebar-width: 160px;
+
+/* Z-Index Scale */
+$zindex--background: -1; // Pseudo-elements, hidden layers
+$zindex--base: 0; // Default stacking context
+$zindex--sidebar-backdrop: 1; // Nav sidebar backdrop
+$zindex--sidebar-list: 2; // Nav sidebar list items
+$zindex--modal-backdrop: 40; // Modal backdrop blur
+$zindex--modal: 999; // Modal dialogs (topmost)
+
+/* Width Scale */
+$width--sm: 50%; // Small containers
+$width--md: 75%; // Medium containers
+$width--lg: 90%; // Large containers
+$width--xl: 100%; // Full width
+$width--1: 1rem;
+$width--2: 2rem;
+$width--3: 3rem;
+$width--4: 4rem;
+$width--5: 5rem;

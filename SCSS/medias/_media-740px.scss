@@ -1,0 +1,402 @@
+@use "../var" as *;
+@use "../mixins" as mixins;
+
+/* ========================================
+   Mobile: ≤740px
+   - Sidebar hidden
+   - Compact spacing
+   - Testimonials hidden
+   ======================================== */
+@media (max-width: 740px) {
+  /* CSS Variables: mobile typography + spacing */
+  :root {
+    --font-size-h1: 2rem; /* 32px */
+    --font-size-h2: 1.5rem; /* 24px */
+    --font-size-h3: 1.25rem; /* 20px */
+    --font-size-body: 1rem; /* 16px */
+
+    --spacing-mobile-lateral: 1rem; /* 16px */
+  }
+
+  /* Global */
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  button {
+    border-radius: 1rem;
+  }
+
+  .btn--sm {
+    padding: 0.4rem 1.5rem;
+    font-size: $font-size-small;
+  }
+
+  .btn--lg {
+    padding: 0.8rem 2rem;
+    font-size: $font-size-medium;
+  }
+
+  .nav-sidebar {
+    display: none;
+  }
+
+  .snap-container {
+    height: 100svh; /* Small viewport height for iOS */
+    padding: 0; /* Sections handle their own padding */
+  }
+
+  .snap-section {
+    padding: $spacing-xlarge $spacing-large;
+  }
+
+  /* ========================================
+     hero Section
+     ======================================== */
+
+  .hero {
+    padding: $spacing-base;
+    margin: 0;
+    text-align: center;
+  }
+
+  .hero__logo--mobile {
+    display: block;
+    width: 5rem;
+    height: auto;
+    margin-bottom: $spacing-large;
+  }
+
+  .hero__title {
+    max-width: $width--lg;
+    font-size: var(--font-size-h1);
+    line-height: $height-tight;
+  }
+
+  .hero__text {
+    font-size: $font-size-body;
+    max-width: $width--lg;
+    margin-bottom: 3rem;
+  }
+
+  .hero__cta {
+    padding: $spacing-base $spacing-large;
+  }
+
+  /* ========================================
+     Team section
+     ======================================== */
+
+  .team {
+    padding: $spacing-xlarge $spacing-large;
+  }
+
+  .team__title {
+    font-size: var(--font-size-h2);
+    text-align: center;
+  }
+
+  .team__text {
+    font-size: $font-size-body;
+    max-width: $width--xl;
+    text-wrap: balance;
+    margin-bottom: 1rem;
+  }
+
+  .team__grid {
+    margin: 0 3rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: $spacing-base;
+  }
+
+  .team__card {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .team__card--img {
+    @include mixins.border-radius;
+    width: $width--xl;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(1);
+    transition: none;
+  }
+
+  /* Card Sizes */
+
+  .team__card-small {
+    grid-column: span 2;
+    height: 150px;
+  }
+  .team__card-large,
+  .team__card-extralarge {
+    grid-column: span 6;
+    height: 150px;
+  }
+
+  .team__card-small-last {
+    grid-column: span 3;
+    height: 150px;
+  }
+
+  /* Hide text overlays on small screens */
+
+  .team__name,
+  .team__role,
+  .team__name-project,
+  .team__brand {
+    display: none;
+  }
+
+  /* Center mini action button */
+  .team__btn {
+    @include mixins.border-radius(50%);
+    @include mixins.flex-center;
+    width: $spacing-large;
+    height: $spacing-large;
+    background: $color--white;
+    color: $color--purple-medium;
+    font-weight: $bold;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0;
+    align-items: center;
+    right: auto;
+    bottom: auto;
+  }
+
+  .team__cta--btn {
+    margin-top: $spacing-base;
+  }
+
+  /* ========================================
+     Solutions Section
+     ======================================== */
+  .solutions {
+    padding: $spacing-large 0;
+  }
+
+  .solutions__title {
+    font-size: var(--font-size-h2);
+  }
+
+  .solutions__text {
+    font-size: $font-size-body;
+    max-width: $width--xl;
+    text-wrap: balance;
+    margin-bottom: 1rem;
+  }
+
+  .solutions__cards {
+    flex-direction: column;
+    width: $width--xl;
+    max-width: 400px;
+    gap: $spacing-base;
+  }
+
+  .solutions__card {
+    padding: 0.7rem;
+  }
+
+  .solutions__carousel {
+    margin: 0 $spacing-base;
+  }
+
+  .solutions__details {
+    order: 2;
+    padding: 1.5rem $spacing-base $spacing-base $spacing-base;
+    margin: 0 $spacing-base;
+    gap: $spacing-base;
+  }
+
+  .solutions__details--title {
+    font-size: var(--font-size-h3);
+  }
+
+  .solutions__details--text {
+    font-size: var(--font-size-body);
+  }
+
+  .solutions__details--list {
+    font-size: var(--font-size-small);
+    padding-left: 0;
+  }
+
+  .solutions__bt {
+    margin-top: 0;
+  }
+
+  .solutions__testimonials {
+    display: none;
+  }
+
+  /* ========================================
+     Contact Section
+     ======================================== */
+  .contact {
+    padding: 0 1rem;
+    margin: 0;
+  }
+
+  .contact__title {
+    font-size: var(--font-size-h2);
+    margin-bottom: 0.5rem;
+  }
+
+  .contact__text {
+    font-size: $font-size-body;
+    max-width: $width--xl;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact__info-group {
+    @include mixins.flex-center;
+    flex-direction: column;
+    width: $width--xl;
+    gap: 1rem;
+  }
+
+  .contact__info {
+    margin-bottom: $spacing-base;
+  }
+
+  .contact__info:last-child {
+    margin-bottom: $spacing-small;
+  }
+
+  .contact__strong {
+    font-size: var(--font-size-small);
+  }
+
+  .contact__form {
+    width: $width--xl;
+    padding: $spacing-base $spacing-large;
+  }
+
+  .contact__form--field {
+    margin-bottom: 0.5rem;
+    gap: 0;
+  }
+
+  .contact__form--title {
+    font-size: var(--font-size-h2);
+  }
+
+  .contact__form--text {
+    font-size: var(--font-size-body);
+    margin-bottom: $spacing-base;
+  }
+
+  .contact__form--textarea {
+    height: 80px;
+    min-height: 50px;
+  }
+
+  .footer {
+    width: $width--xl;
+    margin-top: 0;
+    padding: $spacing-large 0 0.5rem 0;
+  }
+
+  .footer__text {
+    font-size: $font-size-medium;
+  }
+
+  .footer__rights {
+    font-size: $font-size-small;
+  }
+
+  /* Modals: compact layout for small screens */
+
+  .modal__employee--content {
+    @include mixins.flex-center;
+    flex-direction: column;
+    text-align: center;
+    max-width: $width--md;
+    gap: 1rem;
+    padding: 1.5rem;
+  }
+
+  .modal__employee--photo {
+    @include mixins.border-radius;
+    width: $width--xl;
+    max-width: 120px;
+    height: 150px;
+    object-fit: cover;
+    border: 1px solid white;
+  }
+
+  .modal__employee--info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin: 0;
+    width: $width--xl;
+  }
+
+  .modal__employee--body {
+    width: $width--xl;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+    text-align: left;
+  }
+
+  .modal__employee--name {
+    font-size: var(--font-size-h3);
+    font-weight: var(--bold-font);
+  }
+
+  .modal__employee--role {
+    font-size: var(--font-size-small);
+    color: var(--gray);
+  }
+
+  .modal__employee--bio {
+    font-size: var(--font-size-xsmall);
+    margin-bottom: 0.6rem;
+  }
+
+  .modal__employee--list {
+    font-size: var(--font-size-xsmall);
+    padding-left: 1.5rem;
+  }
+
+  dialog.modal__employee,
+  dialog.modal__portfolio,
+  dialog.modal__solutions {
+    inset: 0;
+  }
+
+  .modal__employee--close,
+  .modal__portfolio--close,
+  .modal__solutions--close {
+    top: $spacing-base;
+    right: $spacing-base;
+    font-size: $font-size-body;
+  }
+
+  .modal__solutions--content {
+    width: $width--lg;
+    padding: $spacing-large;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .modal__solutions--text {
+    font-size: $font-size-body;
+    margin: 0;
+    padding: 0 1.5rem;
+    text-wrap: balance;
+  }
+
+  .modal__portfolio--content {
+    width: $width--md;
+    padding: $spacing-xlarge;
+  }
+}
